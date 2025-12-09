@@ -71,9 +71,24 @@
                 </div>
 
                 <!-- Add Reminders Button -->
-                <button class="add-reminders" onclick="alert('Add Reminders')">
+                <button class="add-reminders" onclick="addReminder()">
                     <span class="bell-icon">🔔➕</span> ADD REMINDERS
                 </button>
+
+                <!-- Add Reminder Modal (Hidden) -->
+                <div id="reminderModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+                    <div style="background: white; padding: 2rem; border-radius: 20px; max-width: 350px; width: 90%;">
+                        <h3 style="color: #6B5B8C; margin-bottom: 1rem;">Add Custom Reminder</h3>
+                        <form id="reminderForm" onsubmit="saveReminder(event)">
+                            <input type="text" id="reminderTitle" placeholder="Reminder Title" required style="width: 100%; padding: 12px; border: 2px solid #B5A5D5; border-radius: 10px; margin-bottom: 10px; font-size: 1rem;">
+                            <input type="text" id="reminderEmoji" placeholder="Emoji (e.g., 💊)" maxlength="2" style="width: 100%; padding: 12px; border: 2px solid #B5A5D5; border-radius: 10px; margin-bottom: 15px; font-size: 1rem;">
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit" style="flex: 1; padding: 12px; background: linear-gradient(135deg, #8B7BA8, #B5A5D5); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer;">Add</button>
+                                <button type="button" onclick="closeReminderModal()" style="flex: 1; padding: 12px; background: #E0E0E0; color: #666; border: none; border-radius: 10px; font-weight: bold; cursor: pointer;">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
                 <!-- Bottom Navigation -->
                 <div class="bottom-nav">
@@ -87,5 +102,50 @@
     </div>
 
     <script src="js/navigation.js"></script>
+    <script>
+        function addReminder() {
+            const modal = document.getElementById('reminderModal');
+            modal.style.display = 'flex';
+        }
+
+        function closeReminderModal() {
+            const modal = document.getElementById('reminderModal');
+            modal.style.display = 'none';
+            document.getElementById('reminderForm').reset();
+        }
+
+        function saveReminder(event) {
+            event.preventDefault();
+            const title = document.getElementById('reminderTitle').value;
+            const emoji = document.getElementById('reminderEmoji').value || '🔔';
+            
+            // Create new notification card
+            const notificationList = document.querySelector('.notification-list');
+            const newCard = document.createElement('div');
+            newCard.className = 'notification-card';
+            newCard.innerHTML = `
+                <div class="notif-icon" style="background: linear-gradient(135deg, #8B7BA8, #B5A5D5);">${emoji}</div>
+                <div class="notif-content">
+                    <p class="notif-text">${title}</p>
+                    <div class="notif-buttons">
+                        <button class="notif-btn secondary" onclick="this.closest('.notification-card').remove(); showMessage('info', 'Reminder dismissed');">Dismiss</button>
+                    </div>
+                </div>
+            `;
+            notificationList.appendChild(newCard);
+            
+            closeReminderModal();
+            showMessage('success', 'Reminder added successfully!');
+        }
+
+        // Dismiss notification
+        document.querySelectorAll('.notif-btn.secondary').forEach(btn => {
+            if (btn.textContent.trim() === 'Remind Me Later') {
+                btn.addEventListener('click', function() {
+                    showMessage('info', 'Reminder snoozed for 1 hour');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

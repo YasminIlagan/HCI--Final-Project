@@ -103,29 +103,29 @@
 
                     <!-- Action Buttons -->
                     <div class="action-buttons">
-                        <button class="action-btn primary">Add Symptoms</button>
-                        <button class="action-btn secondary">Add notes...</button>
+                        <button class="action-btn primary" onclick="logSymptom()">Add Symptoms</button>
+                        <button class="action-btn secondary" onclick="addNote()">Add notes...</button>
                     </div>
 
                     <!-- Symptoms -->
                     <div class="symptoms-grid">
-                        <div class="symptom-item">
+                        <div class="symptom-item" onclick="logSpecificSymptom('Cramps')">
                             <div class="symptom-icon">💧</div>
                             <span>Cramps</span>
                         </div>
-                        <div class="symptom-item">
+                        <div class="symptom-item" onclick="logSpecificSymptom('Mood Swings')">
                             <div class="symptom-icon">😔</div>
                             <span>Mood<br>Swings</span>
                         </div>
-                        <div class="symptom-item">
+                        <div class="symptom-item" onclick="logSpecificSymptom('Back Pain')">
                             <div class="symptom-icon">👤</div>
                             <span>Back Pain</span>
                         </div>
-                        <div class="symptom-item">
+                        <div class="symptom-item" onclick="logSpecificSymptom('Flow Level')">
                             <div class="symptom-icon">💧</div>
                             <span>Flow Level</span>
                         </div>
-                        <div class="symptom-item">
+                        <div class="symptom-item" onclick="logSpecificSymptom('Other')">
                             <div class="symptom-icon">❓</div>
                             <span>Other</span>
                         </div>
@@ -144,5 +144,18 @@
     </div>
 
     <script src="js/navigation.js"></script>
+    <script>
+        function logSymptom() {
+            showMessage('success', 'Symptoms logged successfully!');
+        }
+        
+        function addNote() {
+            showMessage('success', 'Note added successfully!');
+        }
+        
+        function logSpecificSymptom(symptomName) {
+            showMessage('success', symptomName + ' logged!');
+        }
+    </script>
 </body>
 </html>

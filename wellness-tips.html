@@ -93,5 +93,112 @@
     </div>
 
     <script src="js/navigation.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            // Add click events to all tip buttons
+            document.querySelectorAll('.tip-btn.play').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    showMessage('info', 'Video tutorial coming soon!');
+                });
+            });
+            
+            document.querySelectorAll('.tip-btn.remind').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    showMessage('success', 'Reminder set! We\'ll notify you later.');
+                });
+            });
+            
+            // Add custom tip functionality
+            const addCustomBtn = document.querySelector('.add-custom-tip');
+            if (addCustomBtn) {
+                addCustomBtn.onclick = function() {
+                    openCustomTipModal();
+                };
+            }
+        });
+        
+        function openCustomTipModal() {
+            const modal = document.createElement('div');
+            modal.id = 'customTipModal';
+            modal.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;';
+            modal.innerHTML = `
+                <div style="background: white; padding: 2rem; border-radius: 20px; max-width: 400px; width: 90%;">
+                    <h3 style="color: #6B5B8C; margin-bottom: 1rem;">Add Custom Wellness Tip</h3>
+                    <form id="customTipForm" onsubmit="saveCustomTip(event)">
+                        <input type="text" id="tipTitle" placeholder="Tip Title" required style="width: 100%; padding: 12px; border: 2px solid #B5A5D5; border-radius: 10px; margin-bottom: 10px; font-size: 1rem;">
+                        <textarea id="tipDescription" placeholder="Tip Description" required style="width: 100%; padding: 12px; border: 2px solid #B5A5D5; border-radius: 10px; margin-bottom: 10px; font-size: 1rem; min-height: 80px;"></textarea>
+                        <input type="text" id="tipEmoji" placeholder="Emoji (e.g., 💪)" maxlength="2" style="width: 100%; padding: 12px; border: 2px solid #B5A5D5; border-radius: 10px; margin-bottom: 15px; font-size: 1rem;">
+                        <div style="display: flex; gap: 10px;">
+                            <button type="submit" style="flex: 1; padding: 12px; background: linear-gradient(135deg, #8B7BA8, #B5A5D5); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer;">Add Tip</button>
+                            <button type="button" onclick="closeCustomTipModal()" style="flex: 1; padding: 12px; background: #E0E0E0; color: #666; border: none; border-radius: 10px; font-weight: bold; cursor: pointer;">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+        
+        function closeCustomTipModal() {
+            const modal = document.getElementById('customTipModal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+        
+        function saveCustomTip(event) {
+            event.preventDefault();
+            const title = document.getElementById('tipTitle').value;
+            const description = document.getElementById('tipDescription').value;
+            const emoji = document.getElementById('tipEmoji').value || '💡';
+            
+            // Create new tip card
+            const tipsList = document.querySelector('.wellness-tips-list');
+            const newTip = document.createElement('div');
+            newTip.className = 'tip-card';
+            newTip.innerHTML = `
+                <div class="tip-icon">${emoji}</div>
+                <div class="tip-content">
+                    <h3>${title}</h3>
+                    <p>${description}</p>
+                    <div class="tip-buttons">
+                        <button class="tip-btn remind" onclick="showMessage('success', 'Reminder set!');">Remind Me Later</button>
+                        <button class="tip-btn" onclick="this.closest('.tip-card').remove(); showMessage('info', 'Tip removed');">Remove</button>
+                    </div>
+                </div>
+            `;
+            tipsList.appendChild(newTip);
+            
+            // Save to localStorage
+            const customTips = JSON.parse(localStorage.getItem('customWellnessTips') || '[]');
+            customTips.push({ title, description, emoji });
+            localStorage.setItem('customWellnessTips', JSON.stringify(customTips));
+            
+            closeCustomTipModal();
+            showMessage('success', 'Custom wellness tip added!');
+        }
+        
+        // Load custom tips on page load
+        window.addEventListener('load', function() {
+            const customTips = JSON.parse(localStorage.getItem('customWellnessTips') || '[]');
+            const tipsList = document.querySelector('.wellness-tips-list');
+            
+            customTips.forEach(tip => {
+                const newTip = document.createElement('div');
+                newTip.className = 'tip-card';
+                newTip.innerHTML = `
+                    <div class="tip-icon">${tip.emoji}</div>
+                    <div class="tip-content">
+                        <h3>${tip.title}</h3>
+                        <p>${tip.description}</p>
+                        <div class="tip-buttons">
+                            <button class="tip-btn remind" onclick="showMessage('success', 'Reminder set!');">Remind Me Later</button>
+                            <button class="tip-btn" onclick="this.closest('.tip-card').remove(); showMessage('info', 'Tip removed');">Remove</button>
+                        </div>
+                    </div>
+                `;
+                tipsList.appendChild(newTip);
+            });
+        });
+    </script>
 </body>
 </html>

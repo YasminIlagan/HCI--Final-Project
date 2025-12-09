@@ -62,5 +62,37 @@
     </div>
 
     <script src="js/navigation.js"></script>
+    <script>
+        function saveNote() {
+            const textarea = document.querySelector('.journal-textarea');
+            if (textarea.value.trim() === '') {
+                showMessage('error', 'Please write something first!');
+                return;
+            }
+            showMessage('success', 'Journal entry saved!');
+            // Save to localStorage
+            const entries = JSON.parse(localStorage.getItem('journalEntries') || '[]');
+            entries.push({
+                date: new Date().toLocaleDateString(),
+                content: textarea.value
+            });
+            localStorage.setItem('journalEntries', JSON.stringify(entries));
+        }
+        
+        function clearJournal() {
+            document.querySelector('.journal-textarea').value = '';
+            showMessage('info', 'Ready for new entry!');
+        }
+        
+        // Update View Entries button
+        document.querySelector('.journal-btn.view').onclick = function() {
+            const entries = JSON.parse(localStorage.getItem('journalEntries') || '[]');
+            if (entries.length === 0) {
+                showMessage('info', 'No journal entries yet!');
+            } else {
+                showMessage('info', `You have ${entries.length} journal entries`);
+            }
+        };
+    </script>
 </body>
 </html>

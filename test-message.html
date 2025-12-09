@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Message</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="padding: 50px;">
+    <h1>Test Success Message</h1>
+    <button onclick="testMessage()" style="padding: 20px; font-size: 18px; background: #8B7BA8; color: white; border: none; border-radius: 10px; cursor: pointer;">
+        Click Me to Test Message
+    </button>
+
+    <script src="js/navigation.js"></script>
+    <script>
+        function testMessage() {
+            console.log('Button clicked!');
+            showMessage('success', 'This is a test message! If you see this, it works!');
+        }
+    </script>
+</body>
+</html>

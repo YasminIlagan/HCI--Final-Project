@@ -1,3 +1,40 @@
+// Success Message Function (like the sign-in message)
+function showMessage(type, message) {
+    console.log('showMessage called:', type, message);
+    
+    // Remove any existing message
+    const existingMessage = document.querySelector('.success-message-box');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+
+    // Create new message box
+    const messageBox = document.createElement('div');
+    messageBox.className = `success-message-box ${type}`;
+    messageBox.innerHTML = `
+        <div class="message-content">
+            <span class="message-text">${message}</span>
+            <span class="message-icon">✓</span>
+        </div>
+    `;
+    document.body.appendChild(messageBox);
+    console.log('Message box added to body');
+
+    // Show message with animation
+    setTimeout(() => {
+        messageBox.classList.add('show');
+        console.log('Show class added');
+    }, 10);
+
+    // Hide and remove message after 5 seconds (longer duration)
+    setTimeout(() => {
+        messageBox.classList.remove('show');
+        setTimeout(() => {
+            messageBox.remove();
+        }, 500);
+    }, 5000);
+}
+
 // Navigation function for separate HTML files
 function navigateTo(screenId) {
     const screenMap = {
@@ -35,8 +72,8 @@ function togglePassword(inputId) {
 
 // Social login handler
 function socialLogin(platform) {
-    alert(`Logging in with ${platform}...`);
-    navigateTo('home-screen');
+    showToast(`Logged in with ${platform}! 🎉`, 'success', '✅');
+    setTimeout(() => navigateTo('home-screen'), 1000);
 }
 
 // Email and phone validation
@@ -61,21 +98,22 @@ function validatePassword(password) {
 // Mood selection
 function selectMood(mood) {
     const moods = {
-        'sad': '😢 Sad',
-        'bad': '😟 Not great',
-        'okay': '😐 Okay',
-        'good': '😊 Good',
-        'great': '😄 Great!'
+        'sad': { text: 'Sad', icon: '😢' },
+        'bad': { text: 'Not great', icon: '😟' },
+        'okay': { text: 'Okay', icon: '😐' },
+        'good': { text: 'Good', icon: '😊' },
+        'great': { text: 'Great!', icon: '😄' }
     };
     
-    alert(`You're feeling: ${moods[mood]}`);
+    const selected = moods[mood];
+    showToast(`Mood logged: ${selected.text}`, 'success', selected.icon);
 }
 
 // Settings Functions
 function handleLogout() {
     if (confirm('Are you sure you want to log out?')) {
-        alert('Logged out successfully! 👋\n\nSee you soon!');
-        navigateTo('welcome-screen');
+        showToast('Logged out successfully! See you soon! 👋', 'success', '✅');
+        setTimeout(() => navigateTo('welcome-screen'), 1000);
     }
 }
 
@@ -107,18 +145,19 @@ function handleProfileUpload(event) {
 
 function removeProfileBg() {
     if (!currentProfileFile) {
-        alert('Please choose a photo first (click the edit photo button).');
+        showToast('Please choose a photo first', 'error', '⚠️');
         return;
     }
+    showToast('Processing image...', 'info', '⏳');
     processImageRemoveBackground(currentProfileFile, 240)
         .then(dataUrl => {
             const imgEl = document.getElementById('profileImage');
             if (imgEl) imgEl.src = dataUrl;
-            alert('Background removal applied.');
+            showToast('Background removed successfully! ✨', 'success', '✅');
         })
         .catch(err => {
             console.error(err);
-            alert('Background removal failed. Try a different photo.');
+            showToast('Background removal failed', 'error', '❌');
         });
 }
 
@@ -173,8 +212,8 @@ function saveAccountSettings(event) {
     const name = document.getElementById('userName').value;
     const age = document.getElementById('userAge').value;
     const email = document.getElementById('userEmail').value;
-    alert(`✅ Account settings saved successfully!\n\nName: ${name}\nAge: ${age}\nEmail: ${email}`);
-    navigateTo('settings-screen');
+    showToast('Account settings saved successfully! ✅', 'success', '💾');
+    setTimeout(() => navigateTo('settings-screen'), 1000);
 }
 
 // Sign In handler
@@ -212,8 +251,8 @@ function handleSignIn(event) {
     }
     
     if (isValid) {
-        alert(`Sign In Successful!\nEmail: ${email}`);
-        navigateTo('home-screen');
+        showToast('Sign In Successful! 🎉', 'success', '✅');
+        setTimeout(() => navigateTo('home-screen'), 1000);
     }
 }
 
@@ -280,12 +319,12 @@ function handleSignUp(event) {
     }
     
     if (!termsAccepted) {
-        alert('Please agree to the Terms and Privacy Policy');
+        showToast('Please agree to the Terms and Privacy Policy', 'error', '⚠️');
         return;
     }
     
     if (isValid) {
-        // Directly navigate to home screen
-        navigateTo('home-screen');
+        showToast(`Welcome, ${fullName}! 🎉`, 'success', '✅');
+        setTimeout(() => navigateTo('home-screen'), 1000);
     }
 }

@@ -1,3 +1,31 @@
+// Toast Notification Function
+function showToast(message, type = 'success', icon = '✅') {
+    // Remove any existing toast
+    const existingToast = document.querySelector('.toast-notification');
+    if (existingToast) {
+        existingToast.remove();
+    }
+
+    // Create new toast
+    const toast = document.createElement('div');
+    toast.className = `toast-notification ${type}`;
+    toast.innerHTML = `<span class="toast-icon">${icon}</span><span>${message}</span>`;
+    document.body.appendChild(toast);
+
+    // Show toast with animation
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+
+    // Hide and remove toast after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            toast.remove();
+        }, 400);
+    }, 3000);
+}
+
 // Auto-navigate from splash to welcome screen
 window.addEventListener('load', () => {
     setTimeout(() => {
@@ -40,7 +68,7 @@ function handleSignIn(event) {
     const email = event.target[0].value;
     const password = event.target[1].value;
     
-    alert(`Sign In Successful!\nEmail: ${email}`);
+    showToast('Sign In Successful! 🎉', 'success', '✅');
     navigateTo('home-screen');
 }
 
@@ -54,31 +82,32 @@ function handleSignUp(event) {
     const termsAccepted = event.target[4].checked;
     
     if (!termsAccepted) {
-        alert('Please agree to the Terms and Privacy Policy');
+        showToast('Please agree to the Terms and Privacy Policy', 'error', '⚠️');
         return;
     }
     
-    alert(`Sign Up Successful!\nWelcome, ${fullName}!`);
+    showToast(`Welcome, ${fullName}! 🎉`, 'success', '✅');
     navigateTo('home-screen');
 }
 
 // Social login handler
 function socialLogin(platform) {
-    alert(`Logging in with ${platform}...`);
+    showToast(`Logged in with ${platform}! 🎉`, 'success', '✅');
     navigateTo('home-screen');
 }
 
 // Mood selection
 function selectMood(mood) {
     const moods = {
-        'sad': '😢 Sad',
-        'bad': '😟 Not great',
-        'okay': '😐 Okay',
-        'good': '😊 Good',
-        'great': '😄 Great!'
+        'sad': { text: 'Sad', icon: '😢' },
+        'bad': { text: 'Not great', icon: '😟' },
+        'okay': { text: 'Okay', icon: '😐' },
+        'good': { text: 'Good', icon: '😊' },
+        'great': { text: 'Great!', icon: '😄' }
     };
     
-    alert(`You're feeling: ${moods[mood]}`);
+    const selected = moods[mood];
+    showToast(`Mood logged: ${selected.text}`, 'success', selected.icon);
 }
 
 // Journal Functions
@@ -87,11 +116,11 @@ function saveNote() {
     const note = textarea.value;
     
     if (note.trim() === '') {
-        alert('Please write something before saving!');
+        showToast('Please write something before saving!', 'error', '⚠️');
         return;
     }
     
-    alert('Note saved successfully! ✅\n\nYour thoughts have been saved to your Luna Journal.');
+    showToast('Note saved successfully! 📝', 'success', '✅');
 }
 
 function clearJournal() {
@@ -99,11 +128,11 @@ function clearJournal() {
     if (textarea.value.trim() !== '') {
         if (confirm('Are you sure you want to clear this note and start a new one?')) {
             textarea.value = '';
-            alert('New note ready! 📝');
+            showToast('New note ready! 📝', 'info', '✨');
         }
     } else {
         textarea.value = '';
-        alert('New note ready! 📝');
+        showToast('New note ready! 📝', 'info', '✨');
     }
 }
 
@@ -177,7 +206,7 @@ function clearChat() {
     if (confirm('Are you sure you want to clear the chat history?')) {
         const chatMessages = document.getElementById('chatMessages');
         chatMessages.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
-        alert('Chat cleared! 🧹 Feel free to start a new conversation with Luna.');
+        showToast('Chat cleared! Start a new conversation 💬', 'success', '🧹');
     }
 }
 
@@ -190,8 +219,10 @@ function sendQuickMessage(topic) {
 // Settings Functions
 function handleLogout() {
     if (confirm('Are you sure you want to log out?')) {
-        alert('Logged out successfully! 👋\n\nSee you soon!');
-        navigateTo('welcome-screen');
+        showToast('Logged out successfully! See you soon! 👋', 'success', '✅');
+        setTimeout(() => {
+            navigateTo('welcome-screen');
+        }, 1000);
     }
 }
 
@@ -227,18 +258,19 @@ function handleProfileUpload(event) {
 // Remove background of currently selected profile image using a simple canvas algorithm
 function removeProfileBg() {
     if (!currentProfileFile) {
-        alert('Please choose a photo first (click the edit photo button).');
+        showToast('Please choose a photo first', 'error', '⚠️');
         return;
     }
+    showToast('Processing image...', 'info', '⏳');
     processImageRemoveBackground(currentProfileFile, 240)
         .then(dataUrl => {
             const imgEl = document.getElementById('profileImage');
             if (imgEl) imgEl.src = dataUrl;
-            alert('Background removal applied. If result not perfect try again with a cleaner background or use a transparent PNG.');
+            showToast('Background removed successfully! ✨', 'success', '✅');
         })
         .catch(err => {
             console.error(err);
-            alert('Background removal failed. Try a different photo or remove background in an editor.');
+            showToast('Background removal failed', 'error', '❌');
         });
 }
 
@@ -296,7 +328,9 @@ function saveAccountSettings(event) {
     const age = document.getElementById('userAge').value;
     const email = document.getElementById('userEmail').value;
     
-    alert(`✅ Account settings saved successfully!\n\nName: ${name}\nAge: ${age}\nEmail: ${email}`);
+    showToast('Account settings saved successfully! ✅', 'success', '💾');
     
-    navigateTo('settings-screen');
+    setTimeout(() => {
+        navigateTo('settings-screen');
+    }, 1000);
 }

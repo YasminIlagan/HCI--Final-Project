@@ -42,8 +42,8 @@
 
                 <!-- Sleep Action Buttons -->
                 <div class="sleep-actions">
-                    <button class="sleep-action-btn primary">+ Log Sleep</button>
-                    <button class="sleep-action-btn secondary">🌙 Set Sleep Goal</button>
+                    <button class="sleep-action-btn primary" onclick="logSleep()">+ Log Sleep</button>
+                    <button class="sleep-action-btn secondary" onclick="setSleepGoal()">🌙 Set Sleep Goal</button>
                 </div>
 
                 <!-- Sleep Stats -->
@@ -77,5 +77,14 @@
     </div>
 
     <script src="js/navigation.js"></script>
+    <script>
+        function logSleep() {
+            showMessage('success', 'Sleep logged: 7h 30m');
+        }
+        
+        function setSleepGoal() {
+            showMessage('success', 'Sleep goal updated: 8 hours');
+        }
+    </script>
 </body>
 </html>
