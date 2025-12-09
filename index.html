@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna - Wellness App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="welcome-main">
+        <header class="welcome-header">
+            <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img" style="width:120px;height:120px;display:block;margin:0 auto 24px;">
+            <h1 class="welcome-title" style="text-align:center;font-size:2.5rem;font-family:'Georgia',serif;color:#6B5B8C;margin-bottom:16px;">WELCOME TO LUNA</h1>
+        </header>
+        <nav style="text-align:center;margin-bottom:32px;">
+            <a href="index.html" class="nav-link">Home</a> |
+            <a href="signin.html" class="nav-link">Sign In</a> |
+            <a href="signup.html" class="nav-link">Sign Up</a> |
+            <a href="settings.html" class="nav-link">Settings</a>
+        </nav>
+        <section class="welcome-actions" style="display:flex;flex-direction:column;align-items:center;gap:20px;max-width:350px;margin:0 auto;">
+            <a href="signin.html" class="btn-primary" style="width:100%;max-width:320px;justify-content:center;display:flex;align-items:center;text-decoration:none;">
+                <span style="font-size:1.2rem;font-weight:bold;">SIGN IN</span>
+                <span class="icon" style="margin-left:auto;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M12 14c-5 0-8 2.5-8 5v2h16v-2c0-2.5-3-5-8-5z"/>
+                    </svg>
+                </span>
+            </a>
+            <a href="signup.html" class="btn-primary" style="width:100%;max-width:320px;justify-content:center;display:flex;align-items:center;text-decoration:none;">
+                <span style="font-size:1.2rem;font-weight:bold;">SIGN UP</span>
+                <span class="icon signup-icon" style="margin-left:auto;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M12 14c-5 0-8 2.5-8 5v2h16v-2c0-2.5-3-5-8-5z"/>
+                    </svg>
+                    <span class="plus-badge">+</span>
+                </span>
+            </a>
+        </section>
+    </main>
+
+    <footer style="text-align:center;margin-top:40px;color:#888;font-size:0.9rem;">
+        &copy; 2025 Luna Wellness App
+    </footer>
+
+    <!-- Sign In Screen -->
+    <div class="screen" id="signin-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content">
+                <button class="back-btn" onclick="navigateTo('welcome-screen')">←</button>
+                <div class="moon-icon tiny">
+                    <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                </div>
+                <h2 class="page-title">Welcome Back<br>to Luna</h2>
+                <p class="subtitle">Let's personalize your wellness journey</p>
+                
+                <form class="auth-form" onsubmit="handleSignIn(event)">
+                    <input type="text" class="input-field" placeholder="Email or Phone Number" required>
+                    <div class="password-wrapper">
+                        <input type="password" class="input-field" id="signin-password" placeholder="Password" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword('signin-password')">👁️</button>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    
+                    <button type="submit" class="btn-primary">
+                        <span>SIGN IN</span>
+                        <span class="icon">👤</span>
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>or continue with</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="social-btn" onclick="socialLogin('Facebook')">
+                        <img src="assets/facebook.png" alt="Facebook" class="social-logo">
+                        <span>Facebook</span>
+                    </button>
+                    <button class="social-btn" onclick="socialLogin('Google')">
+                        <img src="assets/google.png" alt="Google" class="social-logo">
+                        <span>Google</span>
+                    </button>
+                    <button class="social-btn" onclick="socialLogin('Apple')">
+                        <img src="assets/apple.png" alt="Apple" class="social-logo">
+                        <span>Apple ID</span>
+                    </button>
+                </div>
+
+                <p class="switch-auth">Don't have an account? <a href="#" onclick="navigateTo('signup-screen')">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Screen -->
+    <div class="screen" id="signup-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content">
+                <button class="back-btn" onclick="navigateTo('welcome-screen')">←</button>
+                <div class="moon-icon tiny">
+                    <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                </div>
+                <h2 class="page-title">Create your LUNA<br>account</h2>
+                <p class="subtitle">Let's personalize your wellness journey</p>
+                
+                <form class="auth-form" onsubmit="handleSignUp(event)">
+                    <input type="text" class="input-field" placeholder="Full Name" required>
+                    <input type="tel" class="input-field" placeholder="Phone Number" required>
+                    <input type="number" class="input-field" placeholder="Age" required>
+                    <div class="password-wrapper">
+                        <input type="password" class="input-field" id="signup-password" placeholder="Password" maxlength="8" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword('signup-password')">👁️</button>
+                    </div>
+                    <p class="password-hint">Max of 8 characters</p>
+                    
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" required>
+                        <span>I agree to the Terms and Privacy Policy</span>
+                    </label>
+                    
+                    <button type="submit" class="btn-primary">
+                        <span>SIGN UP</span>
+                        <span class="icon">👤+</span>
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>or sign up with</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="social-btn" onclick="socialLogin('Facebook')">
+                        <img src="assets/facebook.png" alt="Facebook" class="social-logo">
+                        <span>Facebook</span>
+                    </button>
+                    <button class="social-btn" onclick="socialLogin('Google')">
+                        <img src="assets/google.png" alt="Google" class="social-logo">
+                        <span>Google</span>
+                    </button>
+                    <button class="social-btn" onclick="socialLogin('Apple')">
+                        <img src="assets/apple.png" alt="Apple" class="social-logo">
+                        <span>Apple ID</span>
+                    </button>
+                </div>
+
+                <p class="switch-auth">Already have an account? <a href="#" onclick="navigateTo('signin-screen')">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Screen -->
+    <div class="screen" id="home-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content home-content">
+                <!-- Header -->
+                <div class="home-header">
+                    <div class="moon-icon tiny-left">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <div class="header-label">HOME</div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <!-- Welcome Section -->
+                <h2 class="home-title">Welcome to Luna</h2>
+                <p class="home-subtitle">how are you feeling today?</p>
+
+                <!-- Mood Selection -->
+                <div class="mood-selector">
+                    <button class="mood-btn mood-sad" onclick="selectMood('sad')">😢</button>
+                    <button class="mood-btn mood-bad" onclick="selectMood('bad')">😟</button>
+                    <button class="mood-btn mood-okay" onclick="selectMood('okay')">😐</button>
+                    <button class="mood-btn mood-good" onclick="selectMood('good')">😊</button>
+                    <button class="mood-btn mood-great" onclick="selectMood('great')">😄</button>
+                </div>
+
+                <!-- Water Drop Slider -->
+                <div class="water-slider">
+                    <div class="water-icon">💧</div>
+                    <input type="range" min="0" max="100" value="50" class="slider">
+                </div>
+
+                <!-- Feature Cards -->
+                <div class="feature-cards">
+                    <div class="feature-card" onclick="navigateTo('period-tracker-screen')">
+                        <div class="card-icon period-icon">
+                            <img src="assets/period-tracker.png" alt="Period Tracker" class="feature-icon">
+                        </div>
+                        <div class="card-content">
+                            <h3>Period Tracker</h3>
+                            <p>Next period in 4 days</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card" onclick="navigateTo('sleep-tracker-screen')">
+                        <div class="card-icon sleep-icon">
+                            <img src="assets/sleep.png" alt="Sleep Tracker" class="feature-icon">
+                        </div>
+                        <div class="card-content">
+                            <h3>Sleep Tracker</h3>
+                            <p>You slept 7 hrs and 30 mins</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card" onclick="navigateTo('wellness-tips-screen')">
+                        <div class="card-icon wellness-icon">
+                            <img src="assets/wellness.png" alt="Wellness" class="feature-icon">
+                        </div>
+                        <div class="card-content">
+                            <h3>Wellness Tips</h3>
+                            <p>Try a 5-min breathing exercise</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card" onclick="navigateTo('journal-screen')">
+                        <div class="card-icon journal-icon">
+                            <img src="assets/journal.png" alt="Journal" class="feature-icon">
+                        </div>
+                        <div class="card-content">
+                            <h3>Luna Journal</h3>
+                            <p>Tap to log your mood today</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn active" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Period Tracker Screen -->
+    <div class="screen" id="period-tracker-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content">
+                <!-- Header -->
+                <div class="tracker-header">
+                    <button class="back-btn-header" onclick="navigateTo('home-screen')">←</button>
+                    <div class="moon-icon tiny-center">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <div class="header-label-center">PERIOD TRACKER</div>
+
+                <!-- Calendar Section -->
+                <div class="calendar-section">
+                    <div class="calendar-header">
+                        <h2 class="calendar-month">October 2025</h2>
+                        <div class="view-toggles">
+                            <button class="toggle-btn active">Month</button>
+                            <button class="toggle-btn">Year</button>
+                        </div>
+                    </div>
+
+                    <div class="calendar-grid">
+                        <div class="day-header">S</div>
+                        <div class="day-header">M</div>
+                        <div class="day-header">T</div>
+                        <div class="day-header">W</div>
+                        <div class="day-header">T</div>
+                        <div class="day-header">F</div>
+                        <div class="day-header">S</div>
+
+                        <!-- Calendar Days -->
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day menstrual">3</div>
+                        <div class="calendar-day menstrual">4</div>
+                        <div class="calendar-day menstrual">5</div>
+                        <div class="calendar-day menstrual">6</div>
+                        <div class="calendar-day menstrual">7</div>
+                        <div class="calendar-day menstrual">8</div>
+                        <div class="calendar-day menstrual">9</div>
+                        <div class="calendar-day follicular">10</div>
+                        <div class="calendar-day follicular">11</div>
+                        <div class="calendar-day follicular">12</div>
+                        <div class="calendar-day follicular">13</div>
+                        <div class="calendar-day follicular">14</div>
+                        <div class="calendar-day follicular">15</div>
+                        <div class="calendar-day follicular">16</div>
+                        <div class="calendar-day follicular">17</div>
+                        <div class="calendar-day ovulation">18</div>
+                        <div class="calendar-day ovulation">19</div>
+                        <div class="calendar-day ovulation">20</div>
+                        <div class="calendar-day ovulation">21</div>
+                        <div class="calendar-day ovulation">22</div>
+                        <div class="calendar-day ovulation">23</div>
+                        <div class="calendar-day luteal">24</div>
+                        <div class="calendar-day luteal">25</div>
+                        <div class="calendar-day luteal">26</div>
+                        <div class="calendar-day luteal">27</div>
+                        <div class="calendar-day luteal">28</div>
+                        <div class="calendar-day luteal">29</div>
+                        <div class="calendar-day luteal">30</div>
+                        <div class="calendar-day luteal">31</div>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="calendar-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot menstrual-dot"></span>
+                            <span>Menstrual</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot follicular-dot"></span>
+                            <span>Follicular</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot ovulation-dot"></span>
+                            <span>Ovulation</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot luteal-dot"></span>
+                            <span>Leuthal</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="action-btn primary">Add Symptoms</button>
+                        <button class="action-btn secondary">Add notes...</button>
+                    </div>
+
+                    <!-- Symptoms -->
+                    <div class="symptoms-grid">
+                        <div class="symptom-item">
+                            <div class="symptom-icon">💧</div>
+                            <span>Cramps</span>
+                        </div>
+                        <div class="symptom-item">
+                            <div class="symptom-icon">😔</div>
+                            <span>Mood<br>Swings</span>
+                        </div>
+                        <div class="symptom-item">
+                            <div class="symptom-icon">👤</div>
+                            <span>Back Pain</span>
+                        </div>
+                        <div class="symptom-item">
+                            <div class="symptom-icon">💧</div>
+                            <span>Flow Level</span>
+                        </div>
+                        <div class="symptom-item">
+                            <div class="symptom-icon">❓</div>
+                            <span>Other</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sleep Tracker Screen -->
+    <div class="screen" id="sleep-tracker-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content">
+                <!-- Header -->
+                <div class="tracker-header">
+                    <button class="back-btn-header" onclick="navigateTo('home-screen')">←</button>
+                    <div class="moon-icon tiny-center">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <div class="header-label-center">SLEEP TRACKER</div>
+
+                <h2 class="sleep-date">October 16</h2>
+
+                <!-- Sleep Circle -->
+                <div class="sleep-circle">
+                    <svg class="circle-svg" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#E5D4E8" stroke-width="15"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#8B7BA8" stroke-width="15" 
+                                stroke-dasharray="565" stroke-dashoffset="141" transform="rotate(-90 100 100)"/>
+                        <circle cx="100" cy="100" r="80" fill="#8B7BA8"/>
+                    </svg>
+                    <div class="sleep-text">
+                        <p class="sleep-main">You slept</p>
+                        <p class="sleep-hours">7 hrs and 30 mins</p>
+                        <p class="sleep-message">💜 Great sleep! Keep it up!</p>
+                    </div>
+                </div>
+
+                <!-- Sleep Action Buttons -->
+                <div class="sleep-actions">
+                    <button class="sleep-action-btn primary">+ Log Sleep</button>
+                    <button class="sleep-action-btn secondary">🌙 Set Sleep Goal</button>
+                </div>
+
+                <!-- Sleep Stats -->
+                <div class="sleep-stats">
+                    <div class="sleep-stat">
+                        <div class="stat-icon">💤</div>
+                        <p class="stat-label">Average Sleep:</p>
+                        <p class="stat-value">7.8 hrs</p>
+                    </div>
+                    <div class="sleep-stat">
+                        <div class="stat-icon">🌙</div>
+                        <p class="stat-label">Sleep Goal:</p>
+                        <p class="stat-value">8 hrs</p>
+                    </div>
+                    <div class="sleep-stat">
+                        <div class="stat-icon">✨</div>
+                        <p class="stat-label">Best Night:</p>
+                        <p class="stat-value">8 45 mins</p>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wellness Tips Screen -->
+    <div class="screen" id="wellness-tips-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content">
+                <!-- Header -->
+                <div class="tracker-header">
+                    <button class="back-btn-header" onclick="navigateTo('home-screen')">←</button>
+                    <div class="moon-icon tiny-center">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <div class="header-label-center">WELLNESS TIP</div>
+
+                <h2 class="wellness-date">October 16</h2>
+
+                <!-- Wellness Tips List -->
+                <div class="wellness-tips-list">
+                    <div class="tip-card">
+                        <div class="tip-icon">🧘‍♀️</div>
+                        <div class="tip-content">
+                            <h3>Start your day with gentle stretching</h3>
+                            <p>5 mins yoga warm-up helps reduce cramps 🙆‍♀️</p>
+                            <div class="tip-buttons">
+                                <button class="tip-btn play">▶️ Watch Video</button>
+                                <button class="tip-btn remind">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🚶‍♀️</div>
+                        <div class="tip-content">
+                            <h3>Take a 15-minute walk</h3>
+                            <p>Brisk walking helps boost your mood and balance hormones 🚶‍♀️</p>
+                            <div class="tip-buttons">
+                                <button class="tip-btn play">▶️ Watch Video</button>
+                                <button class="tip-btn remind">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🏋️‍♀️</div>
+                        <div class="tip-content">
+                            <h3>Do a quick home workout</h3>
+                            <p>Light dumbbell exercise improves blood flow🏋️</p>
+                            <div class="tip-buttons">
+                                <button class="tip-btn play">▶️ Watch Video</button>
+                                <button class="tip-btn remind">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🤸‍♀️</div>
+                        <div class="tip-content">
+                            <h3>Try light pilates</h3>
+                            <p>Strengthen your body while calming and mind😊🧘‍♀️</p>
+                            <div class="tip-buttons">
+                                <button class="tip-btn play">▶️ Watch Video</button>
+                                <button class="tip-btn remind">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Custom Tip Button -->
+                <button class="add-custom-tip" onclick="alert('Add custom tip')">
+                    <span class="plus-icon">➕</span> ADD CUSTOM TIP
+                </button>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Luna Journal Screen -->
+    <div class="screen" id="journal-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content">
+                <!-- Header -->
+                <div class="tracker-header">
+                    <button class="back-btn-header" onclick="navigateTo('home-screen')">←</button>
+                    <div class="moon-icon tiny-center">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <div class="header-label-center">LUNA JOURNAL</div>
+
+                <!-- Journal Notepad -->
+                <div class="journal-notepad">
+                    <div class="notepad-rings">
+                        <div class="ring"></div>
+                        <div class="ring"></div>
+                        <div class="ring"></div>
+                        <div class="ring"></div>
+                    </div>
+                    <textarea class="journal-textarea" placeholder="Write your thoughts here..."></textarea>
+                    <div class="journal-heart">💗</div>
+                </div>
+
+                <!-- Journal Actions -->
+                <div class="journal-actions">
+                    <button class="journal-btn save" onclick="saveNote()">
+                        <span class="journal-icon">🔖</span> SAVE NOTE
+                    </button>
+                    <button class="journal-btn view" onclick="alert('View Entries')">
+                        <span class="journal-icon">📋</span> VIEW ENTRIES
+                    </button>
+                </div>
+
+                <!-- Add New Note Button -->
+                <button class="add-new-note" onclick="clearJournal()">
+                    <span class="plus-icon-circle">➕</span> ADD NEW NOTE
+                </button>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Screen -->
+    <div class="screen" id="notification-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content">
+                <!-- Header -->
+                <div class="notification-header">
+                    <div class="moon-icon tiny-left-notif">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <div class="header-label-center">NOTIFICATION</div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <h2 class="notification-date">Today • Oct 16</h2>
+
+                <!-- Notification Cards -->
+                <div class="notification-list">
+                    <div class="notification-card">
+                        <div class="notif-icon period-notif">💗</div>
+                        <div class="notif-content">
+                            <p class="notif-text">Your period may start in 3 days🩸</p>
+                            <div class="notif-buttons">
+                                <button class="notif-btn primary" onclick="navigateTo('period-tracker-screen')">View Calendar</button>
+                                <button class="notif-btn secondary">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notification-card">
+                        <div class="notif-icon sleep-notif">💤</div>
+                        <div class="notif-content">
+                            <p class="notif-text">Luna says: Time rest- track sleep now</p>
+                            <div class="notif-buttons">
+                                <button class="notif-btn primary" onclick="navigateTo('sleep-tracker-screen')">View Tracker</button>
+                                <button class="notif-btn secondary">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notification-card">
+                        <div class="notif-icon water-notif">💧</div>
+                        <div class="notif-content">
+                            <p class="notif-text">Don't forget to drink water. Stay hydrated</p>
+                            <div class="notif-buttons">
+                                <button class="notif-btn primary">View Tracker</button>
+                                <button class="notif-btn secondary">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notification-card">
+                        <div class="notif-icon wellness-notif">🧘‍♀️</div>
+                        <div class="notif-content">
+                            <p class="notif-text">Wellness tip: Try light yoga to ease cramps</p>
+                            <div class="notif-buttons">
+                                <button class="notif-btn primary" onclick="navigateTo('wellness-tips-screen')">View Tracker</button>
+                                <button class="notif-btn secondary">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Reminders Button -->
+                <button class="add-reminders" onclick="alert('Add Reminders')">
+                    <span class="bell-icon">🔔➕</span> ADD REMINDERS
+                </button>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn active" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ask Luna Screen -->
+    <div class="screen" id="ask-luna-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content chat-content">
+                <!-- Header -->
+                <div class="chat-header">
+                    <div class="moon-icon tiny-left-chat">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <div class="header-label-center">ASK LUNA</div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <p class="chat-subtitle">Answer a few quick question to make LUNA fit your cycle.</p>
+                
+                <button class="clear-chat-btn" onclick="clearChat()">Clear Chat</button>
+
+                <!-- Chat Messages -->
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-message user-message">
+                        Hi Luna... my period is late. I'm worried😟
+                    </div>
+                    
+                    <div class="chat-message luna-message">
+                        Sometimes your period can be delayed because of stress, changes in routine, or natural cycle shifts.
+                    </div>
+                    
+                    <div class="chat-message luna-message">
+                        It doesn't always mean something serious, but it's good to keep track of your symptoms.
+                    </div>
+                    
+                    <div class="chat-message user-message">
+                        Oh, I see. That makes me feel less worried.
+                    </div>
+                    
+                    <div class="chat-message luna-message">
+                        I'm glad to help 💕 Let's keep an eye on your cycle together. ✨
+                    </div>
+                    
+                    <div class="typing-indicator">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="chat-quick-actions">
+                    <button class="quick-action-btn" onclick="sendQuickMessage('Cycle Question')">Cycle Question</button>
+                    <button class="quick-action-btn" onclick="sendQuickMessage('Mood Support')">Mood Support</button>
+                    <button class="quick-action-btn" onclick="sendQuickMessage('Healthy Tips')">Healthy Tips</button>
+                </div>
+
+                <!-- Chat Input -->
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" placeholder="Ask Luna Anything..." id="chatInput" onkeypress="handleChatEnter(event)">
+                    <button class="send-btn" onclick="sendMessage()">
+                        <span class="send-icon">➤</span>
+                    </button>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn active" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Insight Screen -->
+    <div class="screen" id="insight-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content insight-content">
+                <!-- Header -->
+                <div class="insight-header">
+                    <div class="moon-icon tiny-left-insight">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <div class="header-label-center">INSIGHT</div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <!-- Menstrual Cycle Trend -->
+                <section class="insight-section">
+                    <h2 class="insight-title">Menstrual Cycle Trend</h2>
+                    <div class="cycle-trend">
+                        <div class="trend-item">
+                            <span class="trend-date">Oct 3-18</span>
+                            <span class="trend-phase menstrual-phase">Menstural</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-date">Oct 9-13</span>
+                            <span class="trend-phase follicular-phase">Follucular</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-date">Oct 18-24</span>
+                            <span class="trend-phase ovulation-phase">Ovulation</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-date">Oct 28-31</span>
+                            <span class="trend-phase luteal-phase">Luteal</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="section-divider"></div>
+
+                <!-- Sleep Pattern -->
+                <section class="insight-section">
+                    <h2 class="insight-title">Sleep Pattern</h2>
+                    <div class="time-filters">
+                        <button class="time-filter active">7 days</button>
+                        <button class="time-filter">30 days</button>
+                        <button class="time-filter">Custom</button>
+                    </div>
+                    
+                    <!-- Sleep Chart -->
+                    <div class="sleep-chart">
+                        <div class="chart-y-axis">
+                            <span>10</span>
+                            <span>8</span>
+                            <span>6</span>
+                            <span>4</span>
+                            <span>2</span>
+                            <span>0</span>
+                        </div>
+                        <div class="chart-bars">
+                            <div class="bar-container">
+                                <div class="bar bar-pink" style="height: 80%;"></div>
+                                <span class="bar-label">Oct 12</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar bar-pink" style="height: 40%;"></div>
+                                <span class="bar-label">Oct 13</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar bar-purple" style="height: 90%;"></div>
+                                <span class="bar-label">Oct 14</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar bar-pink" style="height: 80%;"></div>
+                                <span class="bar-label">Oct 15</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar bar-purple" style="height: 60%;"></div>
+                                <span class="bar-label">Oct 16</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar bar-purple" style="height: 50%;"></div>
+                                <span class="bar-label">Oct 17</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar bar-pink" style="height: 40%;"></div>
+                                <span class="bar-label">Oct 18</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="section-divider"></div>
+
+                <!-- Summary -->
+                <section class="insight-section">
+                    <h2 class="insight-title">Summary</h2>
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <div class="summary-icon">📅💗</div>
+                            <p class="summary-label">Average Cycle Length:</p>
+                            <p class="summary-value">24 days</p>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">😴💗</div>
+                            <p class="summary-label">Average Sleep Hours:</p>
+                            <p class="summary-value">7.8 hours</p>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">🍃</div>
+                            <p class="summary-label">Most Common<br>Symptoms Cramps,<br>Fatigue</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn active" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Screen -->
+    <div class="screen" id="settings-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content settings-content">
+                <!-- Header -->
+                <div class="settings-header">
+                    <div class="moon-icon tiny-left-settings">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <div class="header-label-center">SETTINGS</div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <!-- Settings Menu -->
+                <div class="settings-menu">
+                    <button class="settings-item edit-profile" onclick="navigateTo('account-settings-screen')">
+                        <span class="settings-icon">✏️👤</span>
+                        <span class="settings-text">EDIT YOUR PROFILE</span>
+                    </button>
+
+                    <button class="settings-item" onclick="navigateTo('account-settings-screen')">
+                        <span class="settings-icon">👤</span>
+                        <span class="settings-text">ACCOUNT SETTINGS</span>
+                    </button>
+
+                    <button class="settings-item" onclick="alert('Privacy & Security')">
+                        <span class="settings-icon">🛡️⚙️</span>
+                        <span class="settings-text">PRIVACY & SECURITY</span>
+                    </button>
+
+                    <button class="settings-item" onclick="alert('App Theme')">
+                        <span class="settings-icon">🌙</span>
+                        <span class="settings-text">APP THEME</span>
+                    </button>
+
+                    <button class="settings-item" onclick="alert('Help & Support')">
+                        <span class="settings-icon">❓</span>
+                        <span class="settings-text">HELP & SUPPORT</span>
+                    </button>
+
+                    <button class="settings-item" onclick="alert('Feedback')">
+                        <span class="settings-icon">👍💬</span>
+                        <span class="settings-text">FEEDBACK</span>
+                    </button>
+                </div>
+
+                <!-- Logout Button -->
+                <button class="logout-btn" onclick="handleLogout()">
+                    <span class="logout-icon">👤➡️</span> LOG OUT
+                </button>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Settings Screen -->
+    <div class="screen" id="account-settings-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content settings-content account-content">
+                <!-- Header -->
+                <div class="account-header">
+                    <button class="back-btn-header" onclick="navigateTo('settings-screen')">←</button>
+                    <div class="moon-icon tiny-center">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <div class="header-label-center">ACCOUNT SETTINGS</div>
+
+                <!-- Profile Picture -->
+                <div class="profile-picture-wrapper">
+                    <div class="profile-picture">
+                        <img src="assets/profile.jpg" alt="Profile" id="profileImage">
+                        <input type="file" id="profileUpload" accept="image/*" style="display:none">
+                        <button class="edit-photo-btn" id="editPhotoBtn" onclick="changePhoto()">
+                            <span>🔄</span>
+                        </button>
+                        <button type="button" class="remove-bg-btn" id="removeBgBtn" title="Auto remove background" onclick="removeProfileBg()">Remove BG</button>
+                    </div>
+                </div>                <!-- Account Form -->
+                <form class="account-form" onsubmit="saveAccountSettings(event)">
+                    <div class="account-field">
+                        <label class="account-label">NAME:</label>
+                        <input type="text" class="account-input" value="Yasmin Ivy Ilagan" id="userName">
+                    </div>
+
+                    <div class="account-field">
+                        <label class="account-label">AGE:</label>
+                        <input type="number" class="account-input" value="20" id="userAge">
+                    </div>
+
+                    <div class="account-field">
+                        <label class="account-label">EMAIL:</label>
+                        <input type="email" class="account-input" value="ilaganyasmin@gmail.com" id="userEmail">
+                    </div>
+
+                    <div class="account-field password-field">
+                        <label class="account-label">PASSWORD:</label>
+                        <input type="password" class="account-input" value="yas***" id="userPassword" disabled>
+                        <button type="button" class="change-password-btn" onclick="alert('Change Password')">CHANGE PASSWORD</button>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="account-actions">
+                        <button type="submit" class="account-action-btn save">SAVE CHANGES</button>
+                        <button type="button" class="account-action-btn cancel" onclick="navigateTo('settings-screen')">CANCEL</button>
+                    </div>
+                </form>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

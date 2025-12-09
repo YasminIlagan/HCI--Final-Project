@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna - Sleep Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sleep Tracker Screen -->
+    <div class="screen active" id="sleep-tracker-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content">
+                <!-- Header -->
+                <div class="tracker-header">
+                    <button class="back-btn-header" onclick="navigateTo('home-screen')">←</button>
+                    <div class="moon-icon tiny-center">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <div class="header-label-center">SLEEP TRACKER</div>
+
+                <h2 class="sleep-date">October 16</h2>
+
+                <!-- Sleep Circle -->
+                <div class="sleep-circle">
+                    <svg class="circle-svg" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#E5D4E8" stroke-width="15"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#8B7BA8" stroke-width="15" 
+                                stroke-dasharray="565" stroke-dashoffset="141" transform="rotate(-90 100 100)"/>
+                        <circle cx="100" cy="100" r="80" fill="#8B7BA8"/>
+                    </svg>
+                    <div class="sleep-text">
+                        <p class="sleep-main">You slept</p>
+                        <p class="sleep-hours">7 hrs and 30 mins</p>
+                        <p class="sleep-message">💜 Great sleep! Keep it up!</p>
+                    </div>
+                </div>
+
+                <!-- Sleep Action Buttons -->
+                <div class="sleep-actions">
+                    <button class="sleep-action-btn primary">+ Log Sleep</button>
+                    <button class="sleep-action-btn secondary">🌙 Set Sleep Goal</button>
+                </div>
+
+                <!-- Sleep Stats -->
+                <div class="sleep-stats">
+                    <div class="sleep-stat">
+                        <div class="stat-icon">💤</div>
+                        <p class="stat-label">Average Sleep:</p>
+                        <p class="stat-value">7.8 hrs</p>
+                    </div>
+                    <div class="sleep-stat">
+                        <div class="stat-icon">🌙</div>
+                        <p class="stat-label">Sleep Goal:</p>
+                        <p class="stat-value">8 hrs</p>
+                    </div>
+                    <div class="sleep-stat">
+                        <div class="stat-icon">✨</div>
+                        <p class="stat-label">Best Night:</p>
+                        <p class="stat-value">8 45 mins</p>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+</body>
+</html>

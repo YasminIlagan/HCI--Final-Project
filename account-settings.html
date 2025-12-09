@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna - Account Settings</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Account Settings Screen -->
+    <div class="screen active" id="account-settings-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content settings-content account-content">
+                <!-- Header -->
+                <div class="account-header">
+                    <button class="back-btn-header" onclick="navigateTo('settings-screen')">←</button>
+                    <div class="moon-icon tiny-center">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <div class="header-label-center">ACCOUNT SETTINGS</div>
+
+                <!-- Profile Picture -->
+                <div class="profile-picture-wrapper">
+                    <div class="profile-picture">
+                        <img src="images/yasmin-profile.jpg" alt="Profile" id="profileImage" style="object-fit: cover; width: 100%; height: 100%;">
+                        <input type="file" id="profileUpload" accept="image/*" style="display:none">
+                        <button class="edit-photo-btn" id="editPhotoBtn" onclick="changePhoto()">
+                            <span>🔄</span>
+                        </button>
+                        <button type="button" class="remove-bg-btn" id="removeBgBtn" title="Auto remove background" onclick="removeProfileBg()">Remove BG</button>
+                    </div>
+                </div>                <!-- Account Form -->
+                <form class="account-form" onsubmit="saveAccountSettings(event)">
+                    <div class="account-field">
+                        <label class="account-label">NAME:</label>
+                        <input type="text" class="account-input" value="Yasmin Ivy Ilagan" id="userName">
+                    </div>
+
+                    <div class="account-field">
+                        <label class="account-label">AGE:</label>
+                        <input type="number" class="account-input" value="20" id="userAge">
+                    </div>
+
+                    <div class="account-field">
+                        <label class="account-label">EMAIL:</label>
+                        <input type="email" class="account-input" value="ilaganyasmin@gmail.com" id="userEmail">
+                    </div>
+
+                    <div class="account-field password-field">
+                        <label class="account-label">PASSWORD:</label>
+                        <input type="password" class="account-input" value="yas***" id="userPassword" disabled>
+                        <button type="button" class="change-password-btn" onclick="alert('Change Password')">CHANGE PASSWORD</button>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="account-actions">
+                        <button type="submit" class="account-action-btn save">SAVE CHANGES</button>
+                        <button type="button" class="account-action-btn cancel" onclick="navigateTo('settings-screen')">CANCEL</button>
+                    </div>
+                </form>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+    <script>
+        // Load saved account data on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            loadAccountData();
+        });
+
+        function loadAccountData() {
+            const savedName = localStorage.getItem('userName');
+            const savedAge = localStorage.getItem('userAge');
+            const savedEmail = localStorage.getItem('userEmail');
+            const savedPhoto = localStorage.getItem('profilePhoto');
+
+            if (savedName) document.getElementById('userName').value = savedName;
+            if (savedAge) document.getElementById('userAge').value = savedAge;
+            if (savedEmail) document.getElementById('userEmail').value = savedEmail;
+            if (savedPhoto) document.getElementById('profileImage').src = savedPhoto;
+        }
+
+        function saveAccountSettings(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('userName').value;
+            const age = document.getElementById('userAge').value;
+            const email = document.getElementById('userEmail').value;
+
+            // Save to localStorage
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userAge', age);
+            localStorage.setItem('userEmail', email);
+
+            // Show success message
+            alert('✅ Account settings saved successfully!');
+            
+            // Navigate back to settings
+            navigateTo('settings-screen');
+        }
+
+        function changePhoto() {
+            document.getElementById('profileUpload').click();
+        }
+
+        document.getElementById('profileUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const photoData = event.target.result;
+                    document.getElementById('profileImage').src = photoData;
+                    localStorage.setItem('profilePhoto', photoData);
+                    alert('✅ Profile photo updated!');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function removeProfileBg() {
+            alert('Background removal feature coming soon! 🎨');
+        }
+    </script>
+</body>
+</html>

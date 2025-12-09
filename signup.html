@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna - Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="welcome-main">
+        <header class="welcome-header">
+            <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img" style="width:120px;height:120px;display:block;margin:0 auto 24px;">
+            <h1 class="welcome-title" style="text-align:center;font-size:2.5rem;font-family:'Georgia',serif;color:#6B5B8C;margin-bottom:16px;">SIGN UP FOR LUNA</h1>
+        </header>
+        <nav style="text-align:center;margin-bottom:32px;">
+            <a href="index.html" class="nav-link">Home</a> |
+            <a href="signin.html" class="nav-link">Sign In</a> |
+            <a href="signup.html" class="nav-link">Sign Up</a> |
+            <a href="settings.html" class="nav-link">Settings</a>
+        </nav>
+        <section class="welcome-actions" style="display:flex;flex-direction:column;align-items:center;gap:20px;max-width:350px;margin:0 auto;">
+            <form class="auth-form" onsubmit="handleSignUp(event)" style="width:100%;max-width:320px;">
+                <input type="text" class="input-field" id="signUpName" placeholder="Full Name" required style="margin-bottom:12px;">
+                <input type="tel" class="input-field" id="signUpPhone" placeholder="Phone Number" required style="margin-bottom:12px;">
+                <input type="number" class="input-field" id="signUpAge" placeholder="Age" min="13" max="100" required style="margin-bottom:12px;">
+                <input type="password" class="input-field" id="signup-password" placeholder="Password" minlength="8" required style="margin-bottom:12px;">
+                <label class="checkbox-wrapper" style="margin-bottom:12px;">
+                    <input type="checkbox" required>
+                    <span>I agree to the Terms and Privacy Policy</span>
+                </label>
+                <button type="submit" class="btn-primary" style="width:100%;">SIGN UP</button>
+            </form>
+            <a href="signin.html" style="text-align:center;color:#6B5B8C;text-decoration:underline;">Already have an account? Sign In</a>
+        </section>
+    </main>
+
+    <footer style="text-align:center;margin-top:40px;color:#888;font-size:0.9rem;">
+        &copy; 2025 Luna Wellness App
+    </footer>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna - Notification</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Notification Screen -->
+    <div class="screen active" id="notification-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content">
+                <!-- Header -->
+                <div class="notification-header">
+                    <div class="moon-icon tiny-left-notif">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <div class="header-label-center">NOTIFICATION</div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <h2 class="notification-date">Today • Oct 16</h2>
+
+                <!-- Notification Cards -->
+                <div class="notification-list">
+                    <div class="notification-card">
+                        <div class="notif-icon period-notif">💗</div>
+                        <div class="notif-content">
+                            <p class="notif-text">Your period may start in 3 days🩸</p>
+                            <div class="notif-buttons">
+                                <button class="notif-btn primary" onclick="navigateTo('period-tracker-screen')">View Calendar</button>
+                                <button class="notif-btn secondary">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notification-card">
+                        <div class="notif-icon sleep-notif">💤</div>
+                        <div class="notif-content">
+                            <p class="notif-text">Luna says: Time rest- track sleep now</p>
+                            <div class="notif-buttons">
+                                <button class="notif-btn primary" onclick="navigateTo('sleep-tracker-screen')">View Tracker</button>
+                                <button class="notif-btn secondary">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notification-card">
+                        <div class="notif-icon water-notif">💧</div>
+                        <div class="notif-content">
+                            <p class="notif-text">Don't forget to drink water. Stay hydrated</p>
+                            <div class="notif-buttons">
+                                <button class="notif-btn primary">View Tracker</button>
+                                <button class="notif-btn secondary">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notification-card">
+                        <div class="notif-icon wellness-notif">🧘‍♀️</div>
+                        <div class="notif-content">
+                            <p class="notif-text">Wellness tip: Try light yoga to ease cramps</p>
+                            <div class="notif-buttons">
+                                <button class="notif-btn primary" onclick="navigateTo('wellness-tips-screen')">View Tracker</button>
+                                <button class="notif-btn secondary">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Reminders Button -->
+                <button class="add-reminders" onclick="alert('Add Reminders')">
+                    <span class="bell-icon">🔔➕</span> ADD REMINDERS
+                </button>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn active" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+</body>
+</html>

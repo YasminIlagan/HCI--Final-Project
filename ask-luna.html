@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna - Ask Luna</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Ask Luna Screen -->
+    <div class="screen active" id="ask-luna-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content chat-content">
+                <!-- Header -->
+                <div class="chat-header">
+                    <div class="moon-icon tiny-left-chat">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <div class="header-label-center">ASK LUNA</div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <p class="chat-subtitle">Answer a few quick question to make LUNA fit your cycle.</p>
+                
+                <button class="clear-chat-btn" onclick="clearChat()">Clear Chat</button>
+
+                <!-- Chat Messages -->
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-message user-message">
+                        Hi Luna... my period is late. I'm worried😟
+                    </div>
+                    
+                    <div class="chat-message luna-message">
+                        Sometimes your period can be delayed because of stress, changes in routine, or natural cycle shifts.
+                    </div>
+                    
+                    <div class="chat-message luna-message">
+                        It doesn't always mean something serious, but it's good to keep track of your symptoms.
+                    </div>
+                    
+                    <div class="chat-message user-message">
+                        Oh, I see. That makes me feel less worried.
+                    </div>
+                    
+                    <div class="chat-message luna-message">
+                        I'm glad to help 💕 Let's keep an eye on your cycle together. ✨
+                    </div>
+                    
+                    <div class="typing-indicator">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="chat-quick-actions">
+                    <button class="quick-action-btn" onclick="sendQuickMessage('Cycle Question')">Cycle Question</button>
+                    <button class="quick-action-btn" onclick="sendQuickMessage('Mood Support')">Mood Support</button>
+                    <button class="quick-action-btn" onclick="sendQuickMessage('Healthy Tips')">Healthy Tips</button>
+                </div>
+
+                <!-- Chat Input -->
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" placeholder="Ask Luna Anything..." id="chatInput" onkeypress="handleChatEnter(event)">
+                    <button class="send-btn" onclick="sendMessage()">
+                        <span class="send-icon">➤</span>
+                    </button>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn active" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+</body>
+</html>

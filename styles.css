@@ -1,0 +1,2080 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+.screen.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Phone Frame */
+.phone-frame {
+    width: 100%;
+    max-width: 375px;
+    height: 812px;
+    background: linear-gradient(180deg, #E5B3E5 0%, #C8B5E8 100%);
+    border-radius: 40px;
+    border: 15px solid #1a1a1a;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Phone Notch */
+.phone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 30px;
+    background: #1a1a1a;
+    border-radius: 0 0 20px 20px;
+    z-index: 10;
+}
+
+.phone-notch::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: #4a4a4a;
+    border-radius: 50%;
+}
+
+/* Content Container */
+.content {
+    padding: 60px 30px 30px;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Back Button */
+.back-btn {
+    position: absolute;
+    top: 60px;
+    left: 30px;
+    background: none;
+    border: none;
+    font-size: 40px;
+    color: #5a4d7a;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    z-index: 5;
+}
+
+.back-btn:hover {
+    color: #7a6b9a;
+}
+
+/* Moon Icon */
+.moon-icon {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 80px auto 40px;
+    overflow: hidden !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.moon-icon.small {
+    width: 150px;
+    height: 150px;
+    margin: 40px auto 60px;
+    overflow: hidden !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.moon-icon.tiny {
+    width: 60px;
+    height: 60px;
+    margin: 20px auto 20px;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.moon-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.moon {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+    max-width: 50%;
+    max-height: 50%;
+    background: linear-gradient(135deg, #FFFACD 0%, #E6E6FA 100%);
+    border-radius: 50% 0 50% 50%;
+    transform: rotate(-45deg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    font-size: 60px;
+    color: #E6C8E6;
+}
+
+.moon-icon.small .heart {
+    font-size: 45px;
+}
+
+.moon-icon.tiny .heart {
+    font-size: 20px;
+}
+
+.star {
+    position: absolute;
+    color: #FFFACD;
+    font-size: 24px;
+    animation: twinkle 2s infinite;
+}
+
+.moon-icon.tiny .star {
+    font-size: 12px;
+}
+
+.star-1 {
+    top: 10%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.star-2 {
+    top: 20%;
+    right: 20%;
+    animation-delay: 0.5s;
+}
+
+.star-3 {
+    bottom: 20%;
+    left: 15%;
+    animation-delay: 1s;
+}
+
+.star-4 {
+    bottom: 15%;
+    right: 15%;
+    animation-delay: 1.5s;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Typography */
+.app-title {
+    text-align: center;
+    font-size: 80px;
+    font-weight: bold;
+    color: #8B7BA8;
+    font-family: 'Arial Rounded MT Bold', sans-serif;
+    margin-top: 40px;
+}
+
+.welcome-title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #6B5B8B;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    font-family: 'Georgia', serif;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #6B5B8B;
+    line-height: 1.3;
+    margin-top: 80px;
+    margin-bottom: 10px;
+    font-family: 'Georgia', serif;
+}
+
+/* Smaller title for signup screen */
+body:has(.auth-form input[placeholder="Full Name"]) .page-title {
+    font-size: 26px;
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: #7a6b9a;
+    margin-bottom: 30px;
+}
+
+body:has(.auth-form input[placeholder="Full Name"]) .subtitle {
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 80px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #9B8DB5 0%, #B5A5D5 100%);
+    border: 3px solid white;
+    border-radius: 50px;
+    padding: 18px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary .icon {
+    font-size: 28px;
+    background: white;
+    color: #9B8DB5;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.btn-primary .icon svg {
+    width: 24px;
+    height: 24px;
+    fill: #9B8DB5;
+}
+
+.signup-icon {
+    position: relative;
+}
+
+.plus-badge {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    background: #9B8DB5;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+/* Forms */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Tighter spacing for signup */
+body:has(.auth-form input[placeholder="Full Name"]) .auth-form {
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.auth-form .btn-primary {
+    padding: 15px 30px;
+    font-size: 20px;
+}
+
+/* Even smaller signup button */
+body:has(.auth-form input[placeholder="Full Name"]) .btn-primary {
+    padding: 12px 25px;
+    font-size: 18px;
+}
+
+.input-field {
+    background: white;
+    border: none;
+    border-radius: 35px;
+    padding: 22px 30px;
+    font-size: 17px;
+    color: #666;
+    width: 100%;
+}
+
+/* Smaller inputs for signup screen */
+body:has(.auth-form input[placeholder="Full Name"]) .input-field {
+    padding: 16px 25px;
+    font-size: 15px;
+    border-radius: 30px;
+}
+
+.input-field::placeholder {
+    color: #999;
+}
+
+.input-field:focus {
+    outline: 2px solid #9B8DB5;
+}
+
+.input-field.error {
+    outline: 2px solid #E74C3C;
+}
+
+.error-message {
+    color: #E74C3C;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 15px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.toggle-password:hover {
+    background: rgba(155, 141, 181, 0.1);
+}
+
+.toggle-password svg {
+    width: 22px;
+    height: 22px;
+    fill: #8B7BA8;
+}
+
+.forgot-password {
+    text-align: center;
+    color: #7a6b9a;
+    text-decoration: underline;
+    font-size: 14px;
+    margin-top: -5px;
+}
+
+.password-hint {
+    color: #7a6b9a;
+    font-size: 11px;
+    margin-top: -5px;
+    padding-left: 15px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #7a6b9a;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    color: #7a6b9a;
+    font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #B5A5D5;
+}
+
+/* Social Login */
+.social-login {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.social-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.social-btn:hover {
+    transform: scale(1.05);
+}
+
+.social-btn img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-logo {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.social-btn span {
+    color: #7a6b9a;
+    font-size: 13px;
+}
+
+/* Switch Auth */
+.switch-auth {
+    text-align: center;
+    color: #7a6b9a;
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+.switch-auth a {
+    color: #6B5B8B;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* HOME SCREEN STYLES */
+.home-content {
+    padding: 50px 20px 100px 20px !important;
+}
+
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.moon-icon.tiny-left {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    position: relative;
+    overflow: hidden !important;
+    flex-shrink: 0;
+}
+
+.header-label {
+    background: white;
+    border: 3px solid #8B7BA8;
+    border-radius: 30px;
+    padding: 12px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2a2a2a;
+}
+
+.settings-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #6B5B7B;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #000;
+    margin: 20px 0 5px 0;
+}
+
+.home-subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* Mood Selector */
+.mood-selector {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.mood-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.mood-btn:hover {
+    transform: scale(1.1);
+}
+
+.mood-sad { background: #E74C3C; }
+.mood-bad { background: #E67E22; }
+.mood-okay { background: #F1C40F; }
+.mood-good { background: #A4D65E; }
+.mood-great { background: #5FBF7F; }
+
+/* Water Slider */
+.water-slider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0 30px 0;
+}
+
+.water-icon {
+    font-size: 40px;
+}
+
+.slider {
+    flex: 1;
+    height: 8px;
+    border-radius: 5px;
+    background: #B5A5D5;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #4a3a6a;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #4a3a6a;
+    cursor: pointer;
+    border: none;
+}
+
+/* Feature Cards */
+.feature-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.period-icon {
+    background: #FFE5E5;
+}
+
+.sleep-icon {
+    background: #E5D4E8;
+}
+
+.wellness-icon {
+    background: #D4F1D4;
+}
+
+.journal-icon {
+    background: #D4E5F1;
+}
+
+.calendar-icon, .sleep-emoji, .wellness-emoji, .journal-emoji {
+    font-size: 32px;
+}
+
+.feature-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.heart-small {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 16px;
+    color: #FF69B4;
+}
+
+.card-content h3 {
+    font-size: 28px;
+    color: #4a4a4a;
+    margin: 0 0 5px 0;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+}
+
+.card-content p {
+    font-size: 15px;
+    color: #7a7a7a;
+    margin: 0;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 40px;
+    padding: 15px 30px;
+    display: flex;
+    gap: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    padding: 5px;
+}
+
+.nav-btn:hover {
+    transform: scale(1.2);
+}
+
+.nav-btn.active {
+    background: #E5D4E8;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+/* TRACKER SCREENS STYLES */
+.tracker-content {
+    padding: 50px 20px 100px 20px !important;
+}
+
+.tracker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.back-btn-header {
+    background: none;
+    border: none;
+    font-size: 40px;
+    color: #5a4d7a;
+    cursor: pointer;
+    padding: 0;
+}
+
+.moon-icon.tiny-center {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    position: relative;
+    overflow: hidden !important;
+    flex-shrink: 0;
+}
+
+.header-label-center {
+    text-align: center;
+    background: white;
+    border: 3px solid #8B7BA8;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2a2a2a;
+    margin: 0 auto 25px auto;
+    display: inline-block;
+    width: fit-content;
+    display: block;
+}
+
+/* PERIOD TRACKER STYLES */
+.calendar-section {
+    background: transparent;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-month {
+    font-size: 32px;
+    font-weight: bold;
+    color: #5a4d7a;
+    margin: 0;
+}
+
+.view-toggles {
+    display: flex;
+    gap: 5px;
+}
+
+.toggle-btn {
+    background: #B5A5D5;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 20px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.toggle-btn.active {
+    background: white;
+    color: #5a4d7a;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.day-header {
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+}
+
+.calendar-day.menstrual {
+    background: #FF9EB5;
+}
+
+.calendar-day.follicular {
+    background: #FFB4C8;
+}
+
+.calendar-day.ovulation {
+    background: #B5E5B5;
+}
+
+.calendar-day.luteal {
+    background: #FFE5A5;
+}
+
+.calendar-legend {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    font-size: 12px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #5a4d7a;
+}
+
+.legend-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.menstrual-dot { background: #DC143C; }
+.follicular-dot { background: #FF69B4; }
+.ovulation-dot { background: #90EE90; }
+.luteal-dot { background: #FFD700; }
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.action-btn.primary {
+    background: #B5A5D5;
+    color: white;
+}
+
+.action-btn.secondary {
+    background: white;
+    color: #7a6b9a;
+}
+
+.symptoms-grid {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+}
+
+.symptom-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: #7a6b9a;
+    text-align: center;
+}
+
+.symptom-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+/* SLEEP TRACKER STYLES */
+.sleep-date, .wellness-date {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #5a4d7a;
+    margin: 25px 0;
+}
+
+.sleep-circle {
+    width: 280px;
+    height: 280px;
+    margin: 40px auto;
+    position: relative;
+}
+
+.circle-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.sleep-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 180px;
+}
+
+.sleep-main {
+    font-size: 16px;
+    margin: 0;
+}
+
+.sleep-hours {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.sleep-message {
+    font-size: 13px;
+    margin: 8px 0 0 0;
+}
+
+.sleep-actions {
+    display: flex;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.sleep-action-btn {
+    flex: 1;
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sleep-action-btn.primary {
+    background: #B5A5D5;
+    color: white;
+}
+
+.sleep-action-btn.secondary {
+    background: white;
+    color: #7a6b9a;
+}
+
+.sleep-stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.sleep-stat {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(181, 165, 213, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 10px auto;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #7a6b9a;
+    margin: 5px 0;
+}
+
+.stat-value {
+    font-size: 14px;
+    color: #7a6b9a;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* WELLNESS TIPS STYLES */
+.wellness-tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tip-card {
+    background: white;
+    border-radius: 25px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.tip-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #E5D4E8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.tip-content {
+    flex: 1;
+}
+
+.tip-content h3 {
+    font-size: 16px;
+    color: #000;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.tip-content p {
+    font-size: 13px;
+    color: #666;
+    margin: 0 0 12px 0;
+}
+
+.tip-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.tip-btn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.tip-btn.play {
+    background: #B5A5D5;
+    color: white;
+}
+
+.tip-btn.remind {
+    background: #F0E5F0;
+    color: #7a6b9a;
+}
+
+.add-custom-tip {
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(135deg, #B5A5D5 0%, #9B8DB5 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.plus-icon {
+    font-size: 20px;
+}
+
+/* JOURNAL SCREEN STYLES */
+.journal-notepad {
+    background: linear-gradient(135deg, #E8D4E8 0%, #D4C8E8 100%);
+    border: 3px solid #6B5B7B;
+    border-radius: 20px;
+    padding: 30px 25px;
+    margin: 30px 0;
+    position: relative;
+    min-height: 400px;
+}
+
+.notepad-rings {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+}
+
+.ring {
+    width: 40px;
+    height: 30px;
+    border: 4px solid #8B7BA8;
+    border-radius: 50% 50% 0 0;
+    border-bottom: none;
+    background: linear-gradient(to bottom, transparent 50%, #E8D4E8 50%);
+}
+
+.journal-textarea {
+    width: 100%;
+    min-height: 350px;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: #5a4d7a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    resize: none;
+    outline: none;
+    line-height: 2;
+    background-image: repeating-linear-gradient(
+        transparent,
+        transparent 31px,
+        #9B8DB5 31px,
+        #9B8DB5 33px
+    );
+}
+
+.journal-textarea::placeholder {
+    color: #8B7BA8;
+}
+
+.journal-heart {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    font-size: 40px;
+}
+
+.journal-actions {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.journal-btn {
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.journal-btn.save {
+    background: #B5A5D5;
+    color: #2a2a2a;
+}
+
+.journal-btn.view {
+    background: #D4C8E8;
+    color: #2a2a2a;
+}
+
+.journal-icon {
+    font-size: 18px;
+}
+
+.add-new-note {
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+    border: none;
+    background: white;
+    color: #2a2a2a;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.plus-icon-circle {
+    width: 30px;
+    height: 30px;
+    background: #8B7BA8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+}
+
+/* NOTIFICATION SCREEN STYLES */
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.moon-icon.tiny-left-notif, 
+.moon-icon.tiny-left-chat,
+.moon-icon.tiny-left-insight,
+.moon-icon.tiny-left-settings {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    position: relative;
+    overflow: hidden !important;
+    flex-shrink: 0;
+}
+
+.notification-date {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #5a4d7a;
+    margin: 20px 0 30px 0;
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.notification-card {
+    background: white;
+    border-radius: 25px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.notif-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.period-notif {
+    background: #FFE5E5;
+}
+
+.sleep-notif {
+    background: #E5D4E8;
+}
+
+.water-notif {
+    background: #D4E5F1;
+}
+
+.wellness-notif {
+    background: #F5F5F5;
+}
+
+.notif-content {
+    flex: 1;
+}
+
+.notif-text {
+    font-size: 15px;
+    color: #000;
+    margin: 5px 0 12px 0;
+    font-weight: 500;
+}
+
+.notif-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.notif-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.notif-btn.primary {
+    background: #C8B5E8;
+    color: white;
+}
+
+.notif-btn.secondary {
+    background: #F0E5F0;
+    color: #7a6b9a;
+}
+
+.add-reminders {
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(135deg, #9B8DB5 0%, #B5A5D5 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.bell-icon {
+    font-size: 24px;
+}
+
+/* ASK LUNA (CHAT) SCREEN STYLES */
+.chat-content {
+    padding-bottom: 180px !important;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.chat-subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #2a2a2a;
+    margin: 10px 20px 15px 20px;
+    line-height: 1.4;
+}
+
+.clear-chat-btn {
+    background: white;
+    border: 2px solid #B5A5D5;
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 14px;
+    color: #2a2a2a;
+    cursor: pointer;
+    float: right;
+    margin: 0 0 20px 0;
+}
+
+.chat-messages {
+    clear: both;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+    padding-bottom: 20px;
+}
+
+.chat-message {
+    max-width: 80%;
+    padding: 15px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.user-message {
+    background: #E8B5D8;
+    color: #2a2a2a;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+.luna-message {
+    background: white;
+    color: #2a2a2a;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+.typing-indicator {
+    display: flex;
+    gap: 5px;
+    padding: 15px;
+    background: white;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: #8B7BA8;
+    border-radius: 50%;
+    animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-10px);
+    }
+}
+
+.chat-quick-actions {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.quick-action-btn {
+    background: #E8B5D8;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: #2a2a2a;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.chat-input-container {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 80px);
+    max-width: 335px;
+    display: flex;
+    gap: 10px;
+    background: white;
+    border-radius: 30px;
+    padding: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.chat-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 15px;
+    font-size: 14px;
+    outline: none;
+    color: #2a2a2a;
+}
+
+.chat-input::placeholder {
+    color: #999;
+}
+
+.send-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #8B7BA8;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.send-icon {
+    color: white;
+    font-size: 20px;
+}
+
+/* INSIGHT SCREEN STYLES */
+.insight-content {
+    padding-bottom: 120px !important;
+}
+
+.insight-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.insight-section {
+    margin: 25px 0;
+}
+
+.insight-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #5a4d7a;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.cycle-trend {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.trend-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+}
+
+.trend-date {
+    font-size: 11px;
+    color: #2a2a2a;
+    font-weight: 600;
+}
+
+.trend-phase {
+    padding: 12px 8px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.menstrual-phase {
+    background: #FFB5C5;
+    color: #8B4A5A;
+}
+
+.follicular-phase {
+    background: #FFD5E5;
+    color: #8B5A6A;
+}
+
+.ovulation-phase {
+    background: #C5E8C5;
+    color: #4A7A4A;
+}
+
+.luteal-phase {
+    background: #FFE8B5;
+    color: #8B7A4A;
+}
+
+.section-divider {
+    height: 3px;
+    background: #8B7BA8;
+    margin: 30px 0;
+    border-radius: 2px;
+}
+
+.time-filters {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.time-filter {
+    background: #B5A5D5;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 13px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.time-filter.active {
+    background: white;
+    color: #5a4d7a;
+}
+
+.sleep-chart {
+    background: rgba(232, 212, 232, 0.4);
+    border-radius: 15px;
+    padding: 20px 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.chart-y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #2a2a2a;
+    font-weight: 600;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.chart-bars {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.bar-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+    justify-content: flex-end;
+}
+
+.bar {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    transition: height 0.3s ease;
+}
+
+.bar-pink {
+    background: #FF69B4;
+}
+
+.bar-purple {
+    background: #9B8DB5;
+}
+
+.bar-label {
+    font-size: 10px;
+    color: #2a2a2a;
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.summary-cards {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.summary-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px 15px;
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.summary-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.summary-label {
+    font-size: 11px;
+    color: #2a2a2a;
+    margin: 8px 0;
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+.summary-value {
+    font-size: 13px;
+    color: #2a2a2a;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* SETTINGS SCREEN STYLES */
+.settings-content {
+    padding: 50px 20px 100px 20px !important;
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.settings-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.settings-item {
+    background: white;
+    border: none;
+    border-radius: 30px;
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2a2a2a;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.settings-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.settings-item.edit-profile {
+    background: linear-gradient(135deg, #E8B5D8 0%, #D4A5C8 100%);
+}
+
+.settings-icon {
+    font-size: 28px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-text {
+    flex: 1;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 18px;
+    border-radius: 30px;
+    border: none;
+    background: white;
+    color: #2a2a2a;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 40px 0 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logout-icon {
+    font-size: 24px;
+}
+
+/* ACCOUNT SETTINGS SCREEN STYLES */
+.account-content {
+    padding: 50px 20px 100px 20px !important;
+}
+
+.account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.profile-picture {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.edit-photo-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #8B7BA8;
+    border: 3px solid white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.remove-bg-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 6px 10px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.9);
+    border: 2px solid #8B7BA8;
+    color: #4a3a6a;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.account-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.account-field {
+    background: white;
+    border-radius: 25px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-field.password-field {
+    flex-wrap: wrap;
+}
+
+.account-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2a2a2a;
+    min-width: 120px;
+}
+
+.account-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #2a2a2a;
+    outline: none;
+}
+
+.account-input:disabled {
+    color: #666;
+}
+
+.change-password-btn {
+    background: #E8B5D8;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #2a2a2a;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.account-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.account-action-btn {
+    flex: 1;
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.account-action-btn.save {
+    background: #B5A5D5;
+    color: white;
+}
+
+.account-action-btn.cancel {
+    background: #D4C8E8;
+    color: #2a2a2a;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+    .phone-frame {
+        border-width: 10px;
+        height: 100vh;
+        max-height: 812px;
+    }
+    
+    .feature-cards {
+        gap: 12px;
+    }
+    
+    .card-content h3 {
+        font-size: 18px;
+    }
+    
+    .bottom-nav {
+        gap: 25px;
+        padding: 12px 25px;
+    }
+    
+    .cycle-trend {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .chat-input-container {
+        width: calc(100% - 60px);
+    }
+    
+    .summary-cards {
+        flex-direction: column;
+    }
+}
+
+/* Scrollbar Styling */
+.content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: #B5A5D5;
+    border-radius: 3px;
+}

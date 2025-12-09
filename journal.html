@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna - Luna Journal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Luna Journal Screen -->
+    <div class="screen active" id="journal-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content">
+                <!-- Header -->
+                <div class="tracker-header">
+                    <button class="back-btn-header" onclick="navigateTo('home-screen')">←</button>
+                    <div class="moon-icon tiny-center">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <div class="header-label-center">LUNA JOURNAL</div>
+
+                <!-- Journal Notepad -->
+                <div class="journal-notepad">
+                    <div class="notepad-rings">
+                        <div class="ring"></div>
+                        <div class="ring"></div>
+                        <div class="ring"></div>
+                        <div class="ring"></div>
+                    </div>
+                    <textarea class="journal-textarea" placeholder="Write your thoughts here..."></textarea>
+                    <div class="journal-heart">💗</div>
+                </div>
+
+                <!-- Journal Actions -->
+                <div class="journal-actions">
+                    <button class="journal-btn save" onclick="saveNote()">
+                        <span class="journal-icon">🔖</span> SAVE NOTE
+                    </button>
+                    <button class="journal-btn view" onclick="alert('View Entries')">
+                        <span class="journal-icon">📋</span> VIEW ENTRIES
+                    </button>
+                </div>
+
+                <!-- Add New Note Button -->
+                <button class="add-new-note" onclick="clearJournal()">
+                    <span class="plus-icon-circle">➕</span> ADD NEW NOTE
+                </button>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+</body>
+</html>

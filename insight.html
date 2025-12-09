@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna - Insight</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Insight Screen -->
+    <div class="screen active" id="insight-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content insight-content">
+                <!-- Header -->
+                <div class="insight-header">
+                    <div class="moon-icon tiny-left-insight">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <div class="header-label-center">INSIGHT</div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <!-- Menstrual Cycle Trend -->
+                <section class="insight-section">
+                    <h2 class="insight-title">Menstrual Cycle Trend</h2>
+                    <div class="cycle-trend">
+                        <div class="trend-item">
+                            <span class="trend-date">Oct 3-18</span>
+                            <span class="trend-phase menstrual-phase">Menstural</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-date">Oct 9-13</span>
+                            <span class="trend-phase follicular-phase">Follucular</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-date">Oct 18-24</span>
+                            <span class="trend-phase ovulation-phase">Ovulation</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-date">Oct 28-31</span>
+                            <span class="trend-phase luteal-phase">Luteal</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="section-divider"></div>
+
+                <!-- Sleep Pattern -->
+                <section class="insight-section">
+                    <h2 class="insight-title">Sleep Pattern</h2>
+                    <div class="time-filters">
+                        <button class="time-filter active">7 days</button>
+                        <button class="time-filter">30 days</button>
+                        <button class="time-filter">Custom</button>
+                    </div>
+                    
+                    <!-- Sleep Chart -->
+                    <div class="sleep-chart">
+                        <div class="chart-y-axis">
+                            <span>10</span>
+                            <span>8</span>
+                            <span>6</span>
+                            <span>4</span>
+                            <span>2</span>
+                            <span>0</span>
+                        </div>
+                        <div class="chart-bars">
+                            <div class="bar-container">
+                                <div class="bar bar-pink" style="height: 80%;"></div>
+                                <span class="bar-label">Oct 12</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar bar-pink" style="height: 40%;"></div>
+                                <span class="bar-label">Oct 13</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar bar-purple" style="height: 90%;"></div>
+                                <span class="bar-label">Oct 14</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar bar-pink" style="height: 80%;"></div>
+                                <span class="bar-label">Oct 15</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar bar-purple" style="height: 60%;"></div>
+                                <span class="bar-label">Oct 16</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar bar-purple" style="height: 50%;"></div>
+                                <span class="bar-label">Oct 17</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar bar-pink" style="height: 40%;"></div>
+                                <span class="bar-label">Oct 18</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="section-divider"></div>
+
+                <!-- Summary -->
+                <section class="insight-section">
+                    <h2 class="insight-title">Summary</h2>
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <div class="summary-icon">📅💗</div>
+                            <p class="summary-label">Average Cycle Length:</p>
+                            <p class="summary-value">24 days</p>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">😴💗</div>
+                            <p class="summary-label">Average Sleep Hours:</p>
+                            <p class="summary-value">7.8 hours</p>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">🍃</div>
+                            <p class="summary-label">Most Common<br>Symptoms Cramps,<br>Fatigue</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn active" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+</body>
+</html>

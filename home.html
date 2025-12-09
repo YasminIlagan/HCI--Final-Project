@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="screen active">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content home-content">
+                <!-- Header -->
+                <div class="home-header">
+                    <div class="moon-icon tiny-left">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <div class="header-label">HOME</div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <!-- Welcome Section -->
+                <h2 class="home-title">Welcome to Luna</h2>
+                <p class="home-subtitle">how are you feeling today?</p>
+
+                <!-- Mood Selection -->
+                <div class="mood-selector">
+                    <button class="mood-btn mood-sad" onclick="selectMood('sad')">😢</button>
+                    <button class="mood-btn mood-bad" onclick="selectMood('bad')">😟</button>
+                    <button class="mood-btn mood-okay" onclick="selectMood('okay')">😐</button>
+                    <button class="mood-btn mood-good" onclick="selectMood('good')">😊</button>
+                    <button class="mood-btn mood-great" onclick="selectMood('great')">😄</button>
+                </div>
+
+                <!-- Water Drop Slider -->
+                <div class="water-slider">
+                    <div class="water-icon">💧</div>
+                    <input type="range" min="0" max="100" value="50" class="slider">
+                </div>
+
+                <!-- Feature Cards -->
+                <div class="feature-cards">
+                    <div class="feature-card" onclick="navigateTo('period-tracker-screen')">
+                        <div class="card-icon period-icon">
+                            <img src="assets/period-tracker.png" alt="Period Tracker" class="feature-icon">
+                        </div>
+                        <div class="card-content">
+                            <h3>Period Tracker</h3>
+                            <p>Next period in 4 days</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card" onclick="navigateTo('sleep-tracker-screen')">
+                        <div class="card-icon sleep-icon">
+                            <img src="assets/sleep.png" alt="Sleep Tracker" class="feature-icon">
+                        </div>
+                        <div class="card-content">
+                            <h3>Sleep Tracker</h3>
+                            <p>You slept 7 hrs and 30 mins</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card" onclick="navigateTo('wellness-tips-screen')">
+                        <div class="card-icon wellness-icon">
+                            <img src="assets/wellness.png" alt="Wellness" class="feature-icon">
+                        </div>
+                        <div class="card-content">
+                            <h3>Wellness Tips</h3>
+                            <p>Try a 5-min breathing exercise</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card" onclick="navigateTo('journal-screen')">
+                        <div class="card-icon journal-icon">
+                            <img src="assets/journal.png" alt="Journal" class="feature-icon">
+                        </div>
+                        <div class="card-content">
+                            <h3>Luna Journal</h3>
+                            <p>Tap to log your mood today</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn active" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+</body>
+</html>

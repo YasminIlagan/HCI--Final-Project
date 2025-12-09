@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna - Wellness Tips</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Wellness Tips Screen -->
+    <div class="screen active" id="wellness-tips-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content">
+                <!-- Header -->
+                <div class="tracker-header">
+                    <button class="back-btn-header" onclick="navigateTo('home-screen')">←</button>
+                    <div class="moon-icon tiny-center">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <div class="header-label-center">WELLNESS TIP</div>
+
+                <h2 class="wellness-date">October 16</h2>
+
+                <!-- Wellness Tips List -->
+                <div class="wellness-tips-list">
+                    <div class="tip-card">
+                        <div class="tip-icon">🧘‍♀️</div>
+                        <div class="tip-content">
+                            <h3>Start your day with gentle stretching</h3>
+                            <p>5 mins yoga warm-up helps reduce cramps 🙆‍♀️</p>
+                            <div class="tip-buttons">
+                                <button class="tip-btn play">▶️ Watch Video</button>
+                                <button class="tip-btn remind">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🚶‍♀️</div>
+                        <div class="tip-content">
+                            <h3>Take a 15-minute walk</h3>
+                            <p>Brisk walking helps boost your mood and balance hormones 🚶‍♀️</p>
+                            <div class="tip-buttons">
+                                <button class="tip-btn play">▶️ Watch Video</button>
+                                <button class="tip-btn remind">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🏋️‍♀️</div>
+                        <div class="tip-content">
+                            <h3>Do a quick home workout</h3>
+                            <p>Light dumbbell exercise improves blood flow🏋️</p>
+                            <div class="tip-buttons">
+                                <button class="tip-btn play">▶️ Watch Video</button>
+                                <button class="tip-btn remind">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🤸‍♀️</div>
+                        <div class="tip-content">
+                            <h3>Try light pilates</h3>
+                            <p>Strengthen your body while calming and mind😊🧘‍♀️</p>
+                            <div class="tip-buttons">
+                                <button class="tip-btn play">▶️ Watch Video</button>
+                                <button class="tip-btn remind">Remind Me Later</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Custom Tip Button -->
+                <button class="add-custom-tip" onclick="alert('Add custom tip')">
+                    <span class="plus-icon">➕</span> ADD CUSTOM TIP
+                </button>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+</body>
+</html>

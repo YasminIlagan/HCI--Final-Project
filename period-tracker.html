@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna - Period Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Period Tracker Screen -->
+    <div class="screen active" id="period-tracker-screen">
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="content tracker-content">
+                <!-- Header -->
+                <div class="tracker-header">
+                    <button class="back-btn-header" onclick="navigateTo('home-screen')">←</button>
+                    <div class="moon-icon tiny-center">
+                        <img src="assets/moon-logo.png" alt="Luna Logo" class="moon-logo-img">
+                    </div>
+                    <button class="settings-btn" onclick="navigateTo('settings-screen')">⚙️</button>
+                </div>
+
+                <div class="header-label-center">PERIOD TRACKER</div>
+
+                <!-- Calendar Section -->
+                <div class="calendar-section">
+                    <div class="calendar-header">
+                        <h2 class="calendar-month">October 2025</h2>
+                        <div class="view-toggles">
+                            <button class="toggle-btn active">Month</button>
+                            <button class="toggle-btn">Year</button>
+                        </div>
+                    </div>
+
+                    <div class="calendar-grid">
+                        <div class="day-header">S</div>
+                        <div class="day-header">M</div>
+                        <div class="day-header">T</div>
+                        <div class="day-header">W</div>
+                        <div class="day-header">T</div>
+                        <div class="day-header">F</div>
+                        <div class="day-header">S</div>
+
+                        <!-- Calendar Days -->
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day"></div>
+                        <div class="calendar-day">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day menstrual">3</div>
+                        <div class="calendar-day menstrual">4</div>
+                        <div class="calendar-day menstrual">5</div>
+                        <div class="calendar-day menstrual">6</div>
+                        <div class="calendar-day menstrual">7</div>
+                        <div class="calendar-day menstrual">8</div>
+                        <div class="calendar-day menstrual">9</div>
+                        <div class="calendar-day follicular">10</div>
+                        <div class="calendar-day follicular">11</div>
+                        <div class="calendar-day follicular">12</div>
+                        <div class="calendar-day follicular">13</div>
+                        <div class="calendar-day follicular">14</div>
+                        <div class="calendar-day follicular">15</div>
+                        <div class="calendar-day follicular">16</div>
+                        <div class="calendar-day follicular">17</div>
+                        <div class="calendar-day ovulation">18</div>
+                        <div class="calendar-day ovulation">19</div>
+                        <div class="calendar-day ovulation">20</div>
+                        <div class="calendar-day ovulation">21</div>
+                        <div class="calendar-day ovulation">22</div>
+                        <div class="calendar-day ovulation">23</div>
+                        <div class="calendar-day luteal">24</div>
+                        <div class="calendar-day luteal">25</div>
+                        <div class="calendar-day luteal">26</div>
+                        <div class="calendar-day luteal">27</div>
+                        <div class="calendar-day luteal">28</div>
+                        <div class="calendar-day luteal">29</div>
+                        <div class="calendar-day luteal">30</div>
+                        <div class="calendar-day luteal">31</div>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="calendar-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot menstrual-dot"></span>
+                            <span>Menstrual</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot follicular-dot"></span>
+                            <span>Follicular</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot ovulation-dot"></span>
+                            <span>Ovulation</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot luteal-dot"></span>
+                            <span>Leuthal</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="action-btn primary">Add Symptoms</button>
+                        <button class="action-btn secondary">Add notes...</button>
+                    </div>
+
+                    <!-- Symptoms -->
+                    <div class="symptoms-grid">
+                        <div class="symptom-item">
+                            <div class="symptom-icon">💧</div>
+                            <span>Cramps</span>
+                        </div>
+                        <div class="symptom-item">
+                            <div class="symptom-icon">😔</div>
+                            <span>Mood<br>Swings</span>
+                        </div>
+                        <div class="symptom-item">
+                            <div class="symptom-icon">👤</div>
+                            <span>Back Pain</span>
+                        </div>
+                        <div class="symptom-item">
+                            <div class="symptom-icon">💧</div>
+                            <span>Flow Level</span>
+                        </div>
+                        <div class="symptom-item">
+                            <div class="symptom-icon">❓</div>
+                            <span>Other</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bottom-nav">
+                    <button class="nav-btn" onclick="navigateTo('home-screen')">🏠</button>
+                    <button class="nav-btn" onclick="navigateTo('notification-screen')">🔔</button>
+                    <button class="nav-btn" onclick="navigateTo('ask-luna-screen')">💬</button>
+                    <button class="nav-btn" onclick="navigateTo('insight-screen')">📊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+</body>
+</html>
