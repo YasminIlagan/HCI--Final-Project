@@ -78,6 +78,30 @@
 
     <script src="js/navigation.js"></script>
     <script>
+        // Embedded showMessage function
+        function showMessage(type, message) {
+            const existingMessage = document.querySelector('.success-message-box');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            const messageBox = document.createElement('div');
+            messageBox.className = 'success-message-box ' + type;
+            messageBox.innerHTML = '<div class="message-content"><span class="message-text">' + message + '</span><span class="message-icon">✓</span></div>';
+            document.body.appendChild(messageBox);
+
+            setTimeout(function() {
+                messageBox.classList.add('show');
+            }, 10);
+
+            setTimeout(function() {
+                messageBox.classList.remove('show');
+                setTimeout(function() {
+                    messageBox.remove();
+                }, 500);
+            }, 5000);
+        }
+        
         function logSleep() {
             showMessage('success', 'Sleep logged: 7h 30m');
         }
