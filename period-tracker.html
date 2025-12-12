@@ -155,7 +155,12 @@
             const messageBox = document.createElement('div');
             messageBox.className = 'success-message-box ' + type;
             messageBox.innerHTML = '<div class="message-content"><span class="message-text">' + message + '</span><span class="message-icon">✓</span></div>';
-            document.body.appendChild(messageBox);
+            const phoneFrame = document.querySelector('.phone-frame');
+            if (phoneFrame) {
+                phoneFrame.appendChild(messageBox);
+            } else {
+                document.body.appendChild(messageBox);
+            }
 
             setTimeout(function() {
                 messageBox.classList.add('show');

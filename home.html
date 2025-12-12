@@ -36,7 +36,8 @@
                 <!-- Water Drop Slider -->
                 <div class="water-slider">
                     <div class="water-icon">💧</div>
-                    <input type="range" min="0" max="100" value="50" class="slider">
+                    <input type="range" min="0" max="100" value="50" class="slider" id="waterSlider">
+                    <span class="slider-value" id="sliderValue">50%</span>
                 </div>
 
                 <!-- Feature Cards -->
@@ -94,5 +95,16 @@
     </div>
 
     <script src="js/navigation.js"></script>
+    <script>
+        // Update slider value display
+        const waterSlider = document.getElementById('waterSlider');
+        const sliderValue = document.getElementById('sliderValue');
+        
+        if (waterSlider && sliderValue) {
+            waterSlider.addEventListener('input', function() {
+                sliderValue.textContent = this.value + '%';
+            });
+        }
+    </script>
 </body>
 </html>

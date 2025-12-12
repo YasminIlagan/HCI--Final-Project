@@ -534,14 +534,29 @@
             gap: 1rem;
             justify-content: center;
             margin-top: 1.5rem;
+            padding: 0 2rem;
         }
 
         .water-icon {
             font-size: 2rem;
+            width: 2.5rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        #water-amount {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            width: 3.5rem;
+            text-align: right;
+            flex-shrink: 0;
         }
 
         .slider {
             width: 300px;
+            flex: 1;
+            max-width: 600px;
             height: 12px;
             border-radius: 6px;
             background: linear-gradient(to right, #E8F5E9 0%, #81C784 100%);
@@ -889,47 +904,216 @@
             .nav-links {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 0.8rem;
+                gap: 0.5rem;
             }
             
             .nav-link {
-                font-size: 0.9rem;
-                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
             }
 
             .welcome-title {
-                font-size: 2rem !important;
+                font-size: 1.8rem !important;
             }
             
             .welcome-subtitle {
-                font-size: 1rem !important;
+                font-size: 0.9rem !important;
             }
 
             .screen-container {
-                padding: 1.5rem 5%;
+                padding: 1.5rem 3%;
             }
             
             .cta-buttons {
                 flex-direction: column;
                 width: 100%;
+                gap: 0.8rem;
             }
             
             .btn {
                 width: 100%;
                 justify-content: center;
+                font-size: 0.9rem;
+                padding: 0.8rem 1.5rem;
             }
             
             .dashboard-grid {
                 grid-template-columns: 1fr !important;
+                gap: 1rem;
             }
             
             .logo-img {
-                width: 40px;
-                height: 40px;
+                width: 35px;
+                height: 35px;
             }
             
             .logo-text {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
+            }
+
+            .hero-section {
+                padding: 2rem 1rem !important;
+            }
+
+            .logo-large {
+                width: 120px !important;
+                height: 120px !important;
+            }
+
+            .section-title {
+                font-size: 1.8rem !important;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            .feature-card {
+                padding: 1.5rem !important;
+            }
+
+            .feature-icon {
+                font-size: 2rem !important;
+                width: 50px !important;
+                height: 50px !important;
+            }
+
+            .feature-card h3 {
+                font-size: 1.1rem !important;
+            }
+
+            .feature-card p {
+                font-size: 0.85rem !important;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem !important;
+            }
+
+            .testimonial-text {
+                font-size: 0.9rem !important;
+            }
+
+            .testimonial-author {
+                font-size: 0.85rem !important;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            .stat-number {
+                font-size: 2rem !important;
+            }
+
+            .stat-label {
+                font-size: 0.85rem !important;
+            }
+
+            .container {
+                margin-top: 100px !important;
+            }
+
+            .top-nav {
+                padding: 0.8rem 3% !important;
+            }
+        }
+
+        /* Extra Small Mobile Screens */
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            .top-nav {
+                padding: 0.6rem 2% !important;
+                gap: 0.5rem;
+            }
+
+            .logo-img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .logo-text {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 0.3rem;
+            }
+
+            .nav-link {
+                font-size: 0.65rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .welcome-title {
+                font-size: 1.5rem !important;
+                line-height: 1.3;
+            }
+
+            .welcome-subtitle {
+                font-size: 0.8rem !important;
+            }
+
+            .logo-large {
+                width: 100px !important;
+                height: 100px !important;
+            }
+
+            .btn {
+                font-size: 0.8rem;
+                padding: 0.7rem 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem !important;
+            }
+
+            .feature-icon {
+                font-size: 1.8rem !important;
+                width: 45px !important;
+                height: 45px !important;
+            }
+
+            .feature-card h3 {
+                font-size: 1rem !important;
+            }
+
+            .feature-card p {
+                font-size: 0.75rem !important;
+            }
+
+            .stat-number {
+                font-size: 1.8rem !important;
+            }
+
+            .stat-label {
+                font-size: 0.75rem !important;
+            }
+
+            .screen-container {
+                padding: 1rem 2%;
+            }
+
+            .container {
+                margin-top: 80px !important;
+            }
+
+            .hero-section {
+                padding: 1.5rem 0.5rem !important;
+            }
+
+            .cta-buttons {
+                gap: 0.6rem;
+            }
+
+            .message {
+                padding: 1rem;
+                font-size: 0.85rem;
             }
         }
         
@@ -1427,50 +1611,58 @@
 
         function renderDashboard() {
             return `
-                <div class="dashboard">
-                    <button class="back-button" onclick="showScreen('welcome')">← Back to Home</button>
-                    <div class="dashboard-header">
-                        <h2 class="dashboard-title">Your Wellness Dashboard</h2>
-                        <p style="color: #666;">How are you feeling today?</p>
+                <div class="dashboard" style="padding: 10px 8px; max-width: 100%;">
+                    <button class="back-button" onclick="showScreen('welcome')" style="font-size: 0.8rem; padding: 8px 12px; margin-bottom: 10px;">← Back to Home</button>
+                    <div class="dashboard-header" style="padding: 5px; margin-bottom: 15px;">
+                        <h2 class="dashboard-title" style="font-size: clamp(1.1rem, 5vw, 2.5rem); margin-bottom: 5px; line-height: 1.2;">Your Wellness Dashboard</h2>
+                        <p style="color: #666; font-size: clamp(0.75rem, 3vw, 1rem); margin: 0;">How are you feeling today?</p>
                     </div>
                     
-                    <div class="mood-section">
-                        <h3 style="color: var(--accent); margin-bottom: 1rem;">Track Your Mood</h3>
-                        <div class="mood-buttons">
-                            <button class="mood-btn" data-mood="sad" onclick="showMoodQuote('sad'); selectMood('sad')" style="background: #E74C3C;">😢</button>
-                            <button class="mood-btn" data-mood="bad" onclick="showMoodQuote('bad'); selectMood('bad')" style="background: #E67E22;">😟</button>
-                            <button class="mood-btn" data-mood="okay" onclick="showMoodQuote('okay'); selectMood('okay')" style="background: #F1C40F;">😐</button>
-                            <button class="mood-btn" data-mood="good" onclick="showMoodQuote('good'); selectMood('good')" style="background: #A4D65E;">😊</button>
-                            <button class="mood-btn" data-mood="great" onclick="showMoodQuote('great'); selectMood('great')" style="background: #5FBF7F;">😄</button>
+                    <div class="mood-section" style="padding: 12px 8px; margin-bottom: 15px;">
+                        <h3 style="color: var(--accent); margin-bottom: 0.8rem; font-size: clamp(0.85rem, 4vw, 1.3rem);">Track Your Mood</h3>
+                        <div class="mood-buttons" style="display: flex; justify-content: center; gap: 10px; flex-wrap: nowrap; margin-bottom: 12px;">
+                            <button class="mood-btn" data-mood="sad" onclick="showMoodQuote('sad'); selectMood('sad')" style="background: #E74C3C; width: 48px; height: 48px; font-size: 26px; border: none; border-radius: 50%; cursor: pointer; flex-shrink: 0;">😢</button>
+                            <button class="mood-btn" data-mood="bad" onclick="showMoodQuote('bad'); selectMood('bad')" style="background: #E67E22; width: 48px; height: 48px; font-size: 26px; border: none; border-radius: 50%; cursor: pointer; flex-shrink: 0;">😟</button>
+                            <button class="mood-btn" data-mood="okay" onclick="showMoodQuote('okay'); selectMood('okay')" style="background: #F1C40F; width: 48px; height: 48px; font-size: 26px; border: none; border-radius: 50%; cursor: pointer; flex-shrink: 0;">😐</button>
+                            <button class="mood-btn" data-mood="good" onclick="showMoodQuote('good'); selectMood('good')" style="background: #A4D65E; width: 48px; height: 48px; font-size: 26px; border: none; border-radius: 50%; cursor: pointer; flex-shrink: 0;">😊</button>
+                            <button class="mood-btn" data-mood="great" onclick="showMoodQuote('great'); selectMood('great')" style="background: #5FBF7F; width: 48px; height: 48px; font-size: 26px; border: none; border-radius: 50%; cursor: pointer; flex-shrink: 0;">😄</button>
                         </div>
                         
-                        <div class="water-tracker">
-                            <span class="water-icon">💧</span>
-                            <input type="range" class="slider" min="0" max="100" value="50" oninput="updateWater(this.value)">
-                            <span id="water-amount">50%</span>
+                        <div class="water-tracker" style="display: flex; align-items: center; gap: 10px; justify-content: center; padding: 8px 5px;">
+                            <span class="water-icon" style="font-size: 28px; width: 32px;">💧</span>
+                            <input type="range" class="slider" min="0" max="100" value="50" oninput="updateWater(this.value)" style="flex: 1; max-width: 55%;">
+                            <span id="water-amount" style="font-size: 0.9rem; min-width: 50px; font-weight: 600;">50%</span>
                         </div>
                     </div>
 
-                    <div class="features-grid">
-                        <div class="feature-card" onclick="showScreen('period')">
-                            <img src="assets/period-tracker.png" alt="Period Tracker" class="feature-icon">
-                            <h3 class="feature-title">Period Tracker</h3>
-                            <p class="feature-desc">Next period in 4 days</p>
+                    <div class="features-grid" style="display: grid; grid-template-columns: 1fr; gap: 10px; padding: 0 8px; margin-top: 15px;">
+                        <div class="feature-card" onclick="showScreen('period')" style="padding: 12px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                            <img src="assets/period-tracker.png" alt="Period Tracker" class="feature-icon" style="width: 50px; height: 50px; flex-shrink: 0;">
+                            <div style="flex: 1;">
+                                <h3 class="feature-title" style="font-size: 1rem; margin: 0 0 3px 0; color: var(--accent); font-weight: 600;">Period Tracker</h3>
+                                <p class="feature-desc" style="font-size: 0.8rem; margin: 0; color: #666;">Next period in 4 days</p>
+                            </div>
                         </div>
-                        <div class="feature-card" onclick="showScreen('sleep')">
-                            <img src="assets/sleep.png" alt="Sleep Tracker" class="feature-icon">
-                            <h3 class="feature-title">Sleep Tracker</h3>
-                            <p class="feature-desc">You slept 7h 30m last night</p>
+                        <div class="feature-card" onclick="showScreen('sleep')" style="padding: 12px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                            <img src="assets/sleep.png" alt="Sleep Tracker" class="feature-icon" style="width: 50px; height: 50px; flex-shrink: 0;">
+                            <div style="flex: 1;">
+                                <h3 class="feature-title" style="font-size: 1rem; margin: 0 0 3px 0; color: var(--accent); font-weight: 600;">Sleep Tracker</h3>
+                                <p class="feature-desc" style="font-size: 0.8rem; margin: 0; color: #666;">You slept 7h 30m last night</p>
+                            </div>
                         </div>
-                        <div class="feature-card" onclick="showScreen('wellness')">
-                            <img src="assets/wellness.png" alt="Wellness Tips" class="feature-icon">
-                            <h3 class="feature-title">Wellness Tips</h3>
-                            <p class="feature-desc">Try a 5-min breathing exercise</p>
+                        <div class="feature-card" onclick="showScreen('wellness')" style="padding: 12px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                            <img src="assets/wellness.png" alt="Wellness Tips" class="feature-icon" style="width: 50px; height: 50px; flex-shrink: 0;">
+                            <div style="flex: 1;">
+                                <h3 class="feature-title" style="font-size: 1rem; margin: 0 0 3px 0; color: var(--accent); font-weight: 600;">Wellness Tips</h3>
+                                <p class="feature-desc" style="font-size: 0.8rem; margin: 0; color: #666;">Try a 5-min breathing exercise</p>
+                            </div>
                         </div>
-                        <div class="feature-card" onclick="showScreen('journal')">
-                            <img src="assets/journal.png" alt="Journal" class="feature-icon">
-                            <h3 class="feature-title">Luna Journal</h3>
-                            <p class="feature-desc">Write your thoughts today</p>
+                        <div class="feature-card" onclick="showScreen('journal')" style="padding: 12px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                            <img src="assets/journal.png" alt="Journal" class="feature-icon" style="width: 50px; height: 50px; flex-shrink: 0;">
+                            <div style="flex: 1;">
+                                <h3 class="feature-title" style="font-size: 1rem; margin: 0 0 3px 0; color: var(--accent); font-weight: 600;">Luna Journal</h3>
+                                <p class="feature-desc" style="font-size: 0.8rem; margin: 0; color: #666;">Write your thoughts today</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1939,41 +2131,41 @@ Grateful for..."></textarea>
 
         function renderAnalytics() {
             return `
-                <div>
-                    <button class="back-button" onclick="showScreen('dashboard')">← Back to Dashboard</button>
-                    <h2 class="dashboard-title">Data Analytics & Insights</h2>
-                    <p style="text-align: center; color: #666; margin-bottom: 2rem;">Track your wellness patterns and trends</p>
+                <div style="padding: 10px;">
+                    <button class="back-button" onclick="showScreen('dashboard')" style="font-size: 0.85rem; padding: 10px 15px; margin-bottom: 15px;">← Back to Dashboard</button>
+                    <h2 class="dashboard-title" style="font-size: clamp(1.1rem, 5vw, 2.2rem); margin-bottom: 8px; text-align: center;">Data Analytics & Insights</h2>
+                    <p style="text-align: center; color: #666; margin-bottom: 1.5rem; font-size: clamp(0.75rem, 3vw, 1rem); padding: 0 10px;">Track your wellness patterns and trends</p>
                     
-                    <div style="display: grid; gap: 2rem;">
+                    <div style="display: grid; gap: 1.5rem;">
                         <!-- Menstrual Cycle Trend -->
-                        <div style="background: var(--light); padding: 2rem; border-radius: 20px;">
-                            <h3 style="color: var(--accent); margin-bottom: 1.5rem;">📊 Menstrual Cycle Trend</h3>
-                            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
-                                <div style="background: #FFB5C5; padding: 1rem; border-radius: 15px; text-align: center;">
-                                    <p style="font-size: 0.9rem; margin: 0 0 0.5rem 0; font-weight: 600;">Oct 3-9</p>
-                                    <p style="margin: 0; color: #8B4A5A;">Menstrual</p>
+                        <div style="background: var(--light); padding: 1rem; border-radius: 15px;">
+                            <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: clamp(0.9rem, 4vw, 1.2rem); text-align: center;">📊 Menstrual Cycle Trend</h3>
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem;">
+                                <div style="background: #FFB5C5; padding: 0.8rem 0.5rem; border-radius: 12px; text-align: center;">
+                                    <p style="font-size: clamp(0.75rem, 3vw, 0.9rem); margin: 0 0 0.3rem 0; font-weight: 600;">Oct 3-9</p>
+                                    <p style="margin: 0; color: #8B4A5A; font-size: clamp(0.7rem, 2.5vw, 0.85rem);">Menstrual</p>
                                 </div>
-                                <div style="background: #FFD5E5; padding: 1rem; border-radius: 15px; text-align: center;">
-                                    <p style="font-size: 0.9rem; margin: 0 0 0.5rem 0; font-weight: 600;">Oct 10-17</p>
-                                    <p style="margin: 0; color: #8B5A6A;">Follicular</p>
+                                <div style="background: #FFD5E5; padding: 0.8rem 0.5rem; border-radius: 12px; text-align: center;">
+                                    <p style="font-size: clamp(0.75rem, 3vw, 0.9rem); margin: 0 0 0.3rem 0; font-weight: 600;">Oct 10-17</p>
+                                    <p style="margin: 0; color: #8B5A6A; font-size: clamp(0.7rem, 2.5vw, 0.85rem);">Follicular</p>
                                 </div>
-                                <div style="background: #C5E8C5; padding: 1rem; border-radius: 15px; text-align: center;">
-                                    <p style="font-size: 0.9rem; margin: 0 0 0.5rem 0; font-weight: 600;">Oct 18-24</p>
-                                    <p style="margin: 0; color: #4A7A4A;">Ovulation</p>
+                                <div style="background: #C5E8C5; padding: 0.8rem 0.5rem; border-radius: 12px; text-align: center;">
+                                    <p style="font-size: clamp(0.75rem, 3vw, 0.9rem); margin: 0 0 0.3rem 0; font-weight: 600;">Oct 18-24</p>
+                                    <p style="margin: 0; color: #4A7A4A; font-size: clamp(0.7rem, 2.5vw, 0.85rem);">Ovulation</p>
                                 </div>
-                                <div style="background: #FFE8B5; padding: 1rem; border-radius: 15px; text-align: center;">
-                                    <p style="font-size: 0.9rem; margin: 0 0 0.5rem 0; font-weight: 600;">Oct 25-31</p>
-                                    <p style="margin: 0; color: #8B7A4A;">Luteal</p>
+                                <div style="background: #FFE8B5; padding: 0.8rem 0.5rem; border-radius: 12px; text-align: center;">
+                                    <p style="font-size: clamp(0.75rem, 3vw, 0.9rem); margin: 0 0 0.3rem 0; font-weight: 600;">Oct 25-31</p>
+                                    <p style="margin: 0; color: #8B7A4A; font-size: clamp(0.7rem, 2.5vw, 0.85rem);">Luteal</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Sleep Pattern Chart -->
-                        <div style="background: var(--light); padding: 2rem; border-radius: 20px;">
-                            <h3 style="color: var(--accent); margin-bottom: 1.5rem;">💤 Sleep Pattern (7 Days)</h3>
-                            <div style="display: flex; gap: 15px; align-items: flex-end; height: 280px; padding: 0 20px 0 60px; position: relative; background: white; border-radius: 15px; padding-top: 40px;">
+                        <div style="background: var(--light); padding: 1rem; border-radius: 15px;">
+                            <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: clamp(0.9rem, 4vw, 1.2rem); text-align: center;">💤 Sleep Pattern (7 Days)</h3>
+                            <div style="display: flex; gap: 6px; align-items: flex-end; height: 200px; padding: 0 5px 0 35px; position: relative; background: white; border-radius: 12px; padding-top: 30px; overflow-x: auto;">
                                 <!-- Y-axis labels -->
-                                <div style="position: absolute; left: 10px; top: 40px; bottom: 40px; display: flex; flex-direction: column; justify-content: space-between; font-size: 0.8rem; color: #888; font-weight: 600;">
+                                <div style="position: absolute; left: 2px; top: 30px; bottom: 35px; display: flex; flex-direction: column; justify-content: space-between; font-size: clamp(0.6rem, 2vw, 0.7rem); color: #888; font-weight: 600;">
                                     <span>10h</span>
                                     <span>8h</span>
                                     <span>6h</span>
@@ -1982,73 +2174,73 @@ Grateful for..."></textarea>
                                     <span>0h</span>
                                 </div>
                                 <!-- Mon -->
-                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0;">
-                                    <div style="width: 100%; max-width: 70px; height: 188px; background: linear-gradient(180deg, #FF69B4, #FF1493); border-radius: 12px 12px 0 0; box-shadow: 0 4px 15px rgba(255,105,180,0.4); position: relative; transition: all 0.3s ease;" onmouseenter="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 20px rgba(255,105,180,0.5)'" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,105,180,0.4)'">
-                                        <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 700; color: #FF1493; white-space: nowrap;">7h 30m</span>
+                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 32px;">
+                                    <div style="width: 100%; max-width: 40px; height: 125px; background: linear-gradient(180deg, #FF69B4, #FF1493); border-radius: 8px 8px 0 0; box-shadow: 0 2px 8px rgba(255,105,180,0.4); position: relative;">
+                                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: clamp(0.6rem, 2vw, 0.7rem); font-weight: 700; color: #FF1493; white-space: nowrap;">7h 30m</span>
                                     </div>
-                                    <span style="font-size: 0.9rem; font-weight: 700; color: #555;">Mon</span>
+                                    <span style="font-size: clamp(0.65rem, 2vw, 0.8rem); font-weight: 700; color: #555;">Mon</span>
                                 </div>
                                 <!-- Tue -->
-                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0;">
-                                    <div style="width: 100%; max-width: 70px; height: 150px; background: linear-gradient(180deg, #B5A5D5, #9B8AB8); border-radius: 12px 12px 0 0; box-shadow: 0 4px 15px rgba(181,165,213,0.4); position: relative; transition: all 0.3s ease;" onmouseenter="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 20px rgba(181,165,213,0.5)'" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(181,165,213,0.4)'">
-                                        <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 700; color: #8B7BA8; white-space: nowrap;">6h 0m</span>
+                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 32px;">
+                                    <div style="width: 100%; max-width: 40px; height: 100px; background: linear-gradient(180deg, #B5A5D5, #9B8AB8); border-radius: 8px 8px 0 0; box-shadow: 0 2px 8px rgba(181,165,213,0.4); position: relative;">
+                                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: clamp(0.6rem, 2vw, 0.7rem); font-weight: 700; color: #8B7BA8; white-space: nowrap;">6h 0m</span>
                                     </div>
-                                    <span style="font-size: 0.9rem; font-weight: 700; color: #555;">Tue</span>
+                                    <span style="font-size: clamp(0.65rem, 2vw, 0.8rem); font-weight: 700; color: #555;">Tue</span>
                                 </div>
                                 <!-- Wed -->
-                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0;">
-                                    <div style="width: 100%; max-width: 70px; height: 213px; background: linear-gradient(180deg, #FF69B4, #FF1493); border-radius: 12px 12px 0 0; box-shadow: 0 4px 15px rgba(255,105,180,0.4); position: relative; transition: all 0.3s ease;" onmouseenter="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 20px rgba(255,105,180,0.5)'" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,105,180,0.4)'">
-                                        <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 700; color: #FF1493; white-space: nowrap;">8h 30m</span>
+                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 32px;">
+                                    <div style="width: 100%; max-width: 40px; height: 142px; background: linear-gradient(180deg, #FF69B4, #FF1493); border-radius: 8px 8px 0 0; box-shadow: 0 2px 8px rgba(255,105,180,0.4); position: relative;">
+                                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: clamp(0.6rem, 2vw, 0.7rem); font-weight: 700; color: #FF1493; white-space: nowrap;">8h 30m</span>
                                     </div>
-                                    <span style="font-size: 0.9rem; font-weight: 700; color: #555;">Wed</span>
+                                    <span style="font-size: clamp(0.65rem, 2vw, 0.8rem); font-weight: 700; color: #555;">Wed</span>
                                 </div>
                                 <!-- Thu -->
-                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0;">
-                                    <div style="width: 100%; max-width: 70px; height: 200px; background: linear-gradient(180deg, #B5A5D5, #9B8AB8); border-radius: 12px 12px 0 0; box-shadow: 0 4px 15px rgba(181,165,213,0.4); position: relative; transition: all 0.3s ease;" onmouseenter="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 20px rgba(181,165,213,0.5)'" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(181,165,213,0.4)'">
-                                        <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 700; color: #8B7BA8; white-space: nowrap;">8h 0m</span>
+                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 32px;">
+                                    <div style="width: 100%; max-width: 40px; height: 133px; background: linear-gradient(180deg, #B5A5D5, #9B8AB8); border-radius: 8px 8px 0 0; box-shadow: 0 2px 8px rgba(181,165,213,0.4); position: relative;">
+                                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: clamp(0.6rem, 2vw, 0.7rem); font-weight: 700; color: #8B7BA8; white-space: nowrap;">8h 0m</span>
                                     </div>
-                                    <span style="font-size: 0.9rem; font-weight: 700; color: #555;">Thu</span>
+                                    <span style="font-size: clamp(0.65rem, 2vw, 0.8rem); font-weight: 700; color: #555;">Thu</span>
                                 </div>
                                 <!-- Fri -->
-                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0;">
-                                    <div style="width: 100%; max-width: 70px; height: 138px; background: linear-gradient(180deg, #B5A5D5, #9B8AB8); border-radius: 12px 12px 0 0; box-shadow: 0 4px 15px rgba(181,165,213,0.4); position: relative; transition: all 0.3s ease;" onmouseenter="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 20px rgba(181,165,213,0.5)'" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(181,165,213,0.4)'">
-                                        <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 700; color: #8B7BA8; white-space: nowrap;">5h 30m</span>
+                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 32px;">
+                                    <div style="width: 100%; max-width: 40px; height: 92px; background: linear-gradient(180deg, #B5A5D5, #9B8AB8); border-radius: 8px 8px 0 0; box-shadow: 0 2px 8px rgba(181,165,213,0.4); position: relative;">
+                                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: clamp(0.6rem, 2vw, 0.7rem); font-weight: 700; color: #8B7BA8; white-space: nowrap;">5h 30m</span>
                                     </div>
-                                    <span style="font-size: 0.9rem; font-weight: 700; color: #555;">Fri</span>
+                                    <span style="font-size: clamp(0.65rem, 2vw, 0.8rem); font-weight: 700; color: #555;">Fri</span>
                                 </div>
                                 <!-- Sat -->
-                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0;">
-                                    <div style="width: 100%; max-width: 70px; height: 225px; background: linear-gradient(180deg, #B5A5D5, #9B8AB8); border-radius: 12px 12px 0 0; box-shadow: 0 4px 15px rgba(181,165,213,0.4); position: relative; transition: all 0.3s ease;" onmouseenter="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 20px rgba(181,165,213,0.5)'" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(181,165,213,0.4)'">
-                                        <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 700; color: #8B7BA8; white-space: nowrap;">9h 0m</span>
+                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 32px;">
+                                    <div style="width: 100%; max-width: 40px; height: 150px; background: linear-gradient(180deg, #B5A5D5, #9B8AB8); border-radius: 8px 8px 0 0; box-shadow: 0 2px 8px rgba(181,165,213,0.4); position: relative;">
+                                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: clamp(0.6rem, 2vw, 0.7rem); font-weight: 700; color: #8B7BA8; white-space: nowrap;">9h 0m</span>
                                     </div>
-                                    <span style="font-size: 0.9rem; font-weight: 700; color: #555;">Sat</span>
+                                    <span style="font-size: clamp(0.65rem, 2vw, 0.8rem); font-weight: 700; color: #555;">Sat</span>
                                 </div>
                                 <!-- Sun -->
-                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0;">
-                                    <div style="width: 100%; max-width: 70px; height: 206px; background: linear-gradient(180deg, #FF69B4, #FF1493); border-radius: 12px 12px 0 0; box-shadow: 0 4px 15px rgba(255,105,180,0.4); position: relative; transition: all 0.3s ease;" onmouseenter="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 20px rgba(255,105,180,0.5)'" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,105,180,0.4)'">
-                                        <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 700; color: #FF1493; white-space: nowrap;">8h 15m</span>
+                                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 32px;">
+                                    <div style="width: 100%; max-width: 40px; height: 137px; background: linear-gradient(180deg, #FF69B4, #FF1493); border-radius: 8px 8px 0 0; box-shadow: 0 2px 8px rgba(255,105,180,0.4); position: relative;">
+                                        <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: clamp(0.6rem, 2vw, 0.7rem); font-weight: 700; color: #FF1493; white-space: nowrap;">8h 15m</span>
                                     </div>
-                                    <span style="font-size: 0.9rem; font-weight: 700; color: #555;">Sun</span>
+                                    <span style="font-size: clamp(0.65rem, 2vw, 0.8rem); font-weight: 700; color: #555;">Sun</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Summary Statistics -->
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
-                            <div style="background: white; padding: 2rem; border-radius: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                                <p style="font-size: 2.5rem; margin: 0;">📅</p>
-                                <p style="color: #666; margin: 1rem 0 0.5rem 0; font-size: 0.9rem;">Average Cycle Length</p>
-                                <p style="font-size: 1.8rem; font-weight: bold; color: var(--accent); margin: 0;">28 days</p>
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+                            <div style="background: white; padding: 1.2rem 1rem; border-radius: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                                <p style="font-size: clamp(1.8rem, 6vw, 2.2rem); margin: 0;">📅</p>
+                                <p style="color: #666; margin: 0.5rem 0 0.3rem 0; font-size: clamp(0.75rem, 2.5vw, 0.85rem);">Average Cycle Length</p>
+                                <p style="font-size: clamp(1.3rem, 4vw, 1.6rem); font-weight: bold; color: var(--accent); margin: 0;">28 days</p>
                             </div>
-                            <div style="background: white; padding: 2rem; border-radius: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                                <p style="font-size: 2.5rem; margin: 0;">💤</p>
-                                <p style="color: #666; margin: 1rem 0 0.5rem 0; font-size: 0.9rem;">Average Sleep</p>
-                                <p style="font-size: 1.8rem; font-weight: bold; color: var(--accent); margin: 0;">7.8 hrs</p>
+                            <div style="background: white; padding: 1.2rem 1rem; border-radius: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                                <p style="font-size: clamp(1.8rem, 6vw, 2.2rem); margin: 0;">💤</p>
+                                <p style="color: #666; margin: 0.5rem 0 0.3rem 0; font-size: clamp(0.75rem, 2.5vw, 0.85rem);">Average Sleep</p>
+                                <p style="font-size: clamp(1.3rem, 4vw, 1.6rem); font-weight: bold; color: var(--accent); margin: 0;">7.8 hrs</p>
                             </div>
-                            <div style="background: white; padding: 2rem; border-radius: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                                <p style="font-size: 2.5rem; margin: 0;">😊</p>
-                                <p style="color: #666; margin: 1rem 0 0.5rem 0; font-size: 0.9rem;">Most Common Mood</p>
-                                <p style="font-size: 1.8rem; font-weight: bold; color: var(--accent); margin: 0;">Happy</p>
+                            <div style="background: white; padding: 1.2rem 1rem; border-radius: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                                <p style="font-size: clamp(1.8rem, 6vw, 2.2rem); margin: 0;">😊</p>
+                                <p style="color: #666; margin: 0.5rem 0 0.3rem 0; font-size: clamp(0.75rem, 2.5vw, 0.85rem);">Most Common Mood</p>
+                                <p style="font-size: clamp(1.3rem, 4vw, 1.6rem); font-weight: bold; color: var(--accent); margin: 0;">Happy</p>
                             </div>
                         </div>
                     </div>
